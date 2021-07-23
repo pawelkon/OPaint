@@ -25,6 +25,7 @@ SOFTWARE.
 #ifndef OPAINT_LABELPIXMAP_H
 #define OPAINT_LABELPIXMAP_H
 
+#include <QLabel>
 #include <QObject>
 
 namespace opaint {
@@ -32,8 +33,14 @@ class LabelPixmap : public QObject
 {
     Q_OBJECT
 
+private:
+    QLabel *label = nullptr;
+
 public:
     explicit LabelPixmap(QObject *parent = nullptr);
+
+    void setLabel(QLabel*);
+
 
 signals:
 
