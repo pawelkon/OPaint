@@ -34,6 +34,8 @@ class Program : public QApplication
 
 public:
     Program(int, char**);
+
+    void start();
 };
 } // namespace opaint
 

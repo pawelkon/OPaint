@@ -30,3 +30,8 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv )
 {
 
 }
+
+void Program::start()
+{
+
+}
