@@ -30,6 +30,7 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
 
 Program::~Program()
 {
+    delete pixmap;
     delete mw;
 }
 
@@ -42,5 +43,12 @@ void Program::start()
 
 void Program::init()
 {
+    initPixmap();
+}
 
+void Program::initPixmap()
+{
+    QImage img(800, 600, QImage::Format_ARGB32);
+    auto pix = QPixmap::fromImage(img);
+    pixmap = new QPixmap(pix);
 }

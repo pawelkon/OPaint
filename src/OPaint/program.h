@@ -36,6 +36,7 @@ class Program : public QApplication
 
 private:
     ui::MainWindow *mw = nullptr;
+    QPixmap *pixmap = nullptr;
 
 public:
     Program(int, char**);
@@ -43,6 +44,7 @@ public:
 
     void start();
     void init();
+    void initPixmap();
 };
 } // namespace opaint
 
