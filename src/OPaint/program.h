@@ -45,6 +45,7 @@ public:
     void start();
     void init();
     void initPixmap();
+    void initDrawingArea();
 };
 } // namespace opaint
 

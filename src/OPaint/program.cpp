@@ -44,6 +44,7 @@ void Program::start()
 void Program::init()
 {
     initPixmap();
+    initDrawingArea();
 }
 
 void Program::initPixmap()
@@ -51,4 +52,9 @@ void Program::initPixmap()
     QImage img(800, 600, QImage::Format_ARGB32);
     auto pix = QPixmap::fromImage(img);
     pixmap = new QPixmap(pix);
+}
+
+void Program::initDrawingArea()
+{
+    mw->drawingArea()->setPixmap(*pixmap);
 }
