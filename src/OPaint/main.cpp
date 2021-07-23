@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#include "mainwindow.h"
-
 #include <QApplication>
+
+#include <opaint/ui/MainWindow>
 
 int main(int argc, char *argv[])
 {
