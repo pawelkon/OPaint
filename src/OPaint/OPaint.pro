@@ -27,6 +27,7 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES += \
+    ../../include/opaint/Debug \
     ../../include/opaint/LabelPixmap \
     ../../include/opaint/Program \
     ../../include/opaint/ui/DrawingArea \
