@@ -42,6 +42,7 @@ public:
     ~Program();
 
     void start();
+    void init();
 };
 } // namespace opaint
 

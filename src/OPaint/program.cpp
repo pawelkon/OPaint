@@ -36,5 +36,11 @@ Program::~Program()
 void Program::start()
 {
     mw = new ui::MainWindow;
+    init();
     mw->show();
+}
+
+void Program::init()
+{
+
 }
