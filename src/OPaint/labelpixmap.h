@@ -35,11 +35,13 @@ class LabelPixmap : public QObject
 
 private:
     QLabel *label = nullptr;
+    QPixmap pix;
 
 public:
     explicit LabelPixmap(QObject *parent = nullptr);
 
     void setLabel(QLabel*);
+    void setPixmap(const QPixmap&);
 
 
 signals:
