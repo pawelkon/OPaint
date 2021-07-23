@@ -25,11 +25,24 @@ SOFTWARE.
 #ifndef OPAINT_DEBUG_H
 #define OPAINT_DEBUG_H
 
+#include <QDebug>
+
 namespace opaint {
 class Debug
 {
 public:
     Debug();
+
+    template < typename T >
+    static bool isNullptr(T *obj, const char *func_info)
+    {
+        if(obj != nullptr) return false;
+        else
+        {
+            qDebug() << func_info<< ":" << typeid(obj).name() << "is nullptr";
+            return true;
+        }
+    }
 };
 } // namespace opaint
 
