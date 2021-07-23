@@ -42,6 +42,7 @@ public:
 
     void setLabel(QLabel*);
     void setPixmap(const QPixmap&);
+    void update();
 
 
 signals:

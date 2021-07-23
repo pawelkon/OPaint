@@ -24,6 +24,8 @@ SOFTWARE.
 
 #include "labelpixmap.h"
 
+#include <opaint/Debug>
+
 using namespace opaint;
 
 LabelPixmap::LabelPixmap(QObject *parent) : QObject(parent)
@@ -34,3 +36,9 @@ LabelPixmap::LabelPixmap(QObject *parent) : QObject(parent)
 void LabelPixmap::setLabel(QLabel *label) { this->label = label; }
 
 void LabelPixmap::setPixmap(const QPixmap &pixmap) { pix = pixmap; }
+
+void LabelPixmap::update()
+{
+    if(!Debug::isNullptr(label, Q_FUNC_INFO))
+        label->setPixmap(pix);
+}
