@@ -9,12 +9,14 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    labelpixmap.cpp \
     ui/drawingarea.cpp \
     main.cpp \
     ui/mainwindow.cpp \
     program.cpp
 
 HEADERS += \
+    labelpixmap.h \
     ui/drawingarea.h \
     ui/mainwindow.h \
     program.h
