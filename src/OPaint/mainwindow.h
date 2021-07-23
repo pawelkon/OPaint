@@ -28,6 +28,8 @@ SOFTWARE.
 #include <QMainWindow>
 #include <QVBoxLayout>
 
+#include <opaint/ui/DrawingArea>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -40,6 +42,7 @@ class MainWindow : public QMainWindow
 
 private:
     QVBoxLayout *centralLayout;
+    DrawingArea *dArea;
 
 public:
     MainWindow(QWidget *parent = nullptr);

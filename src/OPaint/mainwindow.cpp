@@ -35,10 +35,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     centralLayout = new QVBoxLayout;
     this->centralWidget()->setLayout(centralLayout);
+
+    dArea = new DrawingArea;
+    this->centralLayout->addWidget(dArea);
 }
 
 MainWindow::~MainWindow()
 {
-    delete centralLayout; delete ui;
+    delete dArea; delete centralLayout; delete ui;
 }
 
