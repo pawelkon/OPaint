@@ -32,10 +32,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    centralLayout = new QVBoxLayout;
+    this->centralWidget()->setLayout(centralLayout);
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete centralLayout; delete ui;
 }
 

@@ -26,6 +26,7 @@ SOFTWARE.
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,6 +37,9 @@ namespace ui {
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+private:
+    QVBoxLayout *centralLayout;
 
 public:
     MainWindow(QWidget *parent = nullptr);
