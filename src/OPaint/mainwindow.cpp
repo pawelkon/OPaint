@@ -45,3 +45,5 @@ MainWindow::~MainWindow()
     delete dArea; delete centralLayout; delete ui;
 }
 
+DrawingArea * MainWindow::drawingArea() { return dArea; }
+

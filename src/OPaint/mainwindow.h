@@ -48,6 +48,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    DrawingArea * drawingArea();
+
 private:
     Ui::MainWindow *ui;
 };
