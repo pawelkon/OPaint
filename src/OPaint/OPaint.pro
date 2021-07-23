@@ -11,12 +11,12 @@ CONFIG += c++11
 SOURCES += \
     drawingarea.cpp \
     main.cpp \
-    mainwindow.cpp \
+    ui/mainwindow.cpp \
     program.cpp
 
 HEADERS += \
     drawingarea.h \
-    mainwindow.h \
+    ui/mainwindow.h \
     program.h
 
 FORMS += \
