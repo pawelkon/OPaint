@@ -24,12 +24,11 @@ SOFTWARE.
 
 #include <QApplication>
 
-#include <opaint/ui/MainWindow>
+#include <opaint/Program>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    opaint::ui::MainWindow w;
-    w.show();
-    return a.exec();
+    opaint::Program p( argc, argv );
+    p.start();
+    return p.exec();
 }
