@@ -21,6 +21,7 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES += \
+    ../../include/opaint/Program \
     ../../include/opaint/ui/MainWindow
 
 # Default rules for deployment.
