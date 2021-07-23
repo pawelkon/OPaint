@@ -26,12 +26,15 @@ SOFTWARE.
 
 using namespace opaint;
 
-Program::Program(int argc, char **argv) : QApplication( argc, argv )
-{
+Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
 
+Program::~Program()
+{
+    delete mw;
 }
 
 void Program::start()
 {
-
+    mw = new ui::MainWindow;
+    mw->show();
 }

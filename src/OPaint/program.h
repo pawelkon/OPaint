@@ -27,13 +27,19 @@ SOFTWARE.
 
 #include <QApplication>
 
+#include <opaint/ui/MainWindow>
+
 namespace opaint {
 class Program : public QApplication
 {
     Q_OBJECT
 
+private:
+    ui::MainWindow *mw = nullptr;
+
 public:
     Program(int, char**);
+    ~Program();
 
     void start();
 };
