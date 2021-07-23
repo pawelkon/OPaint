@@ -24,6 +24,7 @@ FORMS += \
 
 DISTFILES += \
     ../../include/opaint/Program \
+    ../../include/opaint/ui/DrawingArea \
     ../../include/opaint/ui/MainWindow
 
 # Default rules for deployment.
