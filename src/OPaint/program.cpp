@@ -24,12 +24,15 @@ SOFTWARE.
 
 #include "program.h"
 
+#include <QPainter>
+
 using namespace opaint;
 
 Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
 
 Program::~Program()
 {
+    delete labelPixmap;
     delete pixmap;
     delete image;
     delete mw;
@@ -47,6 +50,7 @@ void Program::init()
     initImage();
     initPixmap();
     initDrawingArea();
+    initLabelPixmap();
 }
 
 void Program::initImage()
@@ -63,4 +67,11 @@ void Program::initPixmap()
 void Program::initDrawingArea()
 {
     mw->drawingArea()->setPixmap(*pixmap);
+}
+
+void Program::initLabelPixmap()
+{
+    labelPixmap = new LabelPixmap;
+    labelPixmap->setLabel(mw->drawingArea());
+    labelPixmap->setPixmap(pixmap);
 }
