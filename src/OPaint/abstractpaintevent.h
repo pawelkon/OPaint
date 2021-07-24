@@ -21,23 +21,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
+
 #ifndef OPAINT_ABSTRACTPAINTEVENT_H
 #define OPAINT_ABSTRACTPAINTEVENT_H
 
 #include <QObject>
 
 namespace opaint {
-
 class AbstractPaintEvent : public QObject
 {
     Q_OBJECT
-public:
+
+protected:
     explicit AbstractPaintEvent(QObject *parent = nullptr);
 
 signals:
 
 };
-
 } // namespace opaint
 
 #endif // OPAINT_ABSTRACTPAINTEVENT_H
