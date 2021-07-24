@@ -29,6 +29,7 @@ FORMS += \
     mainwindow.ui
 
 DISTFILES += \
+    ../../include/opaint/AbstractPaintEvent \
     ../../include/opaint/Debug \
     ../../include/opaint/LabelPixmap \
     ../../include/opaint/Program \
