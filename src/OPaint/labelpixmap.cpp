@@ -35,10 +35,10 @@ LabelPixmap::LabelPixmap(QObject *parent) : QObject(parent)
 
 void LabelPixmap::setLabel(QLabel *label) { this->label = label; }
 
-void LabelPixmap::setPixmap(const QPixmap &pixmap) { pix = pixmap; }
+void LabelPixmap::setPixmap(QPixmap* pixmap) { pix = pixmap; }
 
 void LabelPixmap::update()
 {
-    if(ptrcheck(label))
-        label->setPixmap(pix);
+    if(ptrcheck(label) && ptrcheck(pix))
+        label->setPixmap(*pix);
 }
