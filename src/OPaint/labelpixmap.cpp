@@ -39,6 +39,6 @@ void LabelPixmap::setPixmap(const QPixmap &pixmap) { pix = pixmap; }
 
 void LabelPixmap::update()
 {
-    if(!Debug::isNullptr(label, Q_FUNC_INFO))
+    if(ptrcheck(label))
         label->setPixmap(pix);
 }
