@@ -25,6 +25,8 @@ SOFTWARE.
 #ifndef OPAINT_DEBUG_H
 #define OPAINT_DEBUG_H
 
+#define ptrcheck(ptr) !Debug::isNullptr(ptr, Q_FUNC_INFO)
+
 #include <QDebug>
 
 namespace opaint {
