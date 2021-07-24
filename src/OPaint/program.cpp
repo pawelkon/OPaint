@@ -31,6 +31,7 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
 Program::~Program()
 {
     delete pixmap;
+    delete image;
     delete mw;
 }
 
@@ -43,15 +44,20 @@ void Program::start()
 
 void Program::init()
 {
+    initImage();
     initPixmap();
     initDrawingArea();
 }
 
+void Program::initImage()
+{
+    image = new QImage(800, 600, QImage::Format_ARGB32);
+    image->fill(Qt::white);
+}
+
 void Program::initPixmap()
 {
-    QImage img(800, 600, QImage::Format_ARGB32);
-    auto pix = QPixmap::fromImage(img);
-    pixmap = new QPixmap(pix);
+    pixmap = new QPixmap(QPixmap::fromImage(*image));
 }
 
 void Program::initDrawingArea()

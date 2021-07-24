@@ -36,6 +36,7 @@ class Program : public QApplication
 
 private:
     ui::MainWindow *mw = nullptr;
+    QImage *image = nullptr;
     QPixmap *pixmap = nullptr;
 
 public:
@@ -44,6 +45,7 @@ public:
 
     void start();
     void init();
+    void initImage();
     void initPixmap();
     void initDrawingArea();
 };
