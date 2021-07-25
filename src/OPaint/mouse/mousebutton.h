@@ -45,10 +45,14 @@ protected:
 
 private:
     void pressEventFilter(QEvent*);
+    void releaseEventFilter(QEvent*);
+
     void properPressed(QMouseEvent*);
+    void properReleased(QMouseEvent*);
 
 signals:
     void pressed(QMouseEvent*);
+    void released(QMouseEvent*);
 };
 } // namespace opaint
 

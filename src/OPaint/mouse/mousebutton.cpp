@@ -34,6 +34,7 @@ MouseButton::MouseButton(QObject *parent) : QObject(parent)
 bool MouseButton::eventFilter(QObject *obj, QEvent *ev)
 {
     pressEventFilter(ev);
+    releaseEventFilter(ev);
 
     return QObject::eventFilter( obj, ev );
 }
@@ -44,8 +45,20 @@ void MouseButton::pressEventFilter(QEvent *ev)
         properPressed(static_cast<QMouseEvent*>(ev));
 }
 
+void MouseButton::releaseEventFilter(QEvent *ev)
+{
+    if(ev->type() == QEvent::MouseButtonPress)
+        properReleased(static_cast<QMouseEvent*>(ev));
+}
+
 void MouseButton::properPressed(QMouseEvent *ev)
 {
     if(ev->buttons() == button)
         emit pressed(ev);
+}
+
+void MouseButton::properReleased(QMouseEvent *ev)
+{
+    if(ev->buttons() == button)
+        emit released(ev);
 }
