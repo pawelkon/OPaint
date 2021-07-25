@@ -12,6 +12,7 @@ SOURCES += \
     abstractpaintevent.cpp \
     debug.cpp \
     labelpixmap.cpp \
+    mouse/mouse.cpp \
     ui/drawingarea.cpp \
     main.cpp \
     ui/mainwindow.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     abstractpaintevent.h \
     debug.h \
     labelpixmap.h \
+    mouse/mouse.h \
     ui/drawingarea.h \
     ui/mainwindow.h \
     program.h
