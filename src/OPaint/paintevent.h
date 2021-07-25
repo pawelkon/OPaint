@@ -26,10 +26,13 @@ SOFTWARE.
 #define OPAINT_ABSTRACTPAINTEVENT_H
 
 #include <QObject>
+#include <QPainter>
 
 #include <opaint/Mouse>
 #include <opaint/MouseButton>
 #include <opaint/LabelPixmap>
+
+#include <opaint/Debug>
 
 namespace opaint {
 class PaintEvent : public QObject
