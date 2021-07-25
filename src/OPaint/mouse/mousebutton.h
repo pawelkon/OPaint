@@ -25,6 +25,8 @@ SOFTWARE.
 #ifndef OPAINT_MOUSEBUTTON_H
 #define OPAINT_MOUSEBUTTON_H
 
+#include <QEvent>
+#include <QMouseEvent>
 #include <QObject>
 
 namespace opaint {
@@ -41,8 +43,12 @@ public:
 protected:
     bool eventFilter(QObject*, QEvent*) override;
 
-signals:
+private:
+    void pressEventFilter(QEvent*);
+    void properPressed(QMouseEvent*);
 
+signals:
+    void pressed(QMouseEvent*);
 };
 } // namespace opaint
 
