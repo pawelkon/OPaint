@@ -36,6 +36,11 @@ MouseButton::MouseButton(const Qt::MouseButton &button)
     this->button = button;
 }
 
+bool MouseButton::isPressed()
+{
+    return buttonPress;
+}
+
 bool MouseButton::eventFilter(QObject *obj, QEvent *ev)
 {
     pressEventFilter(ev);
@@ -59,11 +64,17 @@ void MouseButton::releaseEventFilter(QEvent *ev)
 void MouseButton::properPressed(QMouseEvent *ev)
 {
     if(ev->buttons() == button)
+    {
+        buttonPress = true;
         emit pressed(ev);
+    }
 }
 
 void MouseButton::properReleased(QMouseEvent *ev)
 {
     if(ev->buttons() == button)
+    {
+        buttonPress = false;
         emit released(ev);
+    }
 }

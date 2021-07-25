@@ -36,10 +36,13 @@ class MouseButton : public QObject
 
 private:
     Qt::MouseButton button;
+    bool buttonPress = false;
 
 public:
     explicit MouseButton(QObject *parent = nullptr);
     MouseButton(const Qt::MouseButton& = Qt::NoButton);
+
+    bool isPressed();
 
 protected:
     bool eventFilter(QObject*, QEvent*) override;
