@@ -39,6 +39,7 @@ private:
     const Mouse *mous = nullptr;
     const MouseButton *mousBtn = nullptr;
 
+public:
     void setMouse(const Mouse*);
     void setMouseButton(const MouseButton*);
 
