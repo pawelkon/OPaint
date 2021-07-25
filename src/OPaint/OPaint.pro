@@ -14,6 +14,7 @@ SOURCES += \
     mouse/mouse.cpp \
     mouse/mousebutton.cpp \
     paintevent.cpp \
+    penevent.cpp \
     ui/drawingarea.cpp \
     main.cpp \
     ui/mainwindow.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     mouse/mouse.h \
     mouse/mousebutton.h \
     paintevent.h \
+    penevent.h \
     ui/drawingarea.h \
     ui/mainwindow.h \
     program.h
@@ -38,6 +40,7 @@ DISTFILES += \
     ../../include/opaint/Mouse \
     ../../include/opaint/MouseButton \
     ../../include/opaint/PaintEvent \
+    ../../include/opaint/PenEvent \
     ../../include/opaint/Program \
     ../../include/opaint/ui/DrawingArea \
     ../../include/opaint/ui/MainWindow
