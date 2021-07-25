@@ -27,13 +27,26 @@ SOFTWARE.
 
 #include <QObject>
 
+#include <opaint/Mouse>
+#include <opaint/MouseButton>
+
 namespace opaint {
 class PaintEvent : public QObject
 {
     Q_OBJECT
 
+private:
+    const Mouse *mous = nullptr;
+    const MouseButton *mousBtn = nullptr;
+
+    void setMouse(const Mouse*);
+    void setMouseButton(const MouseButton*);
+
 protected:
     explicit PaintEvent(QObject *parent = nullptr);
+
+    const Mouse * mouse();
+    const MouseButton * mouseButton();
 
 signals:
 

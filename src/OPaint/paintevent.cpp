@@ -26,7 +26,24 @@ SOFTWARE.
 
 using namespace opaint;
 
-PaintEvent::PaintEvent(QObject *parent) : QObject(parent)
+void PaintEvent::setMouse(const Mouse *mouse)
 {
+    this->mous = mouse;
+}
 
+void PaintEvent::setMouseButton(const MouseButton *button)
+{
+    this->mousBtn = button;
+}
+
+PaintEvent::PaintEvent(QObject *parent) : QObject(parent) {}
+
+const Mouse *PaintEvent::mouse()
+{
+    return mous;
+}
+
+const MouseButton *PaintEvent::mouseButton()
+{
+    return mousBtn;
 }
