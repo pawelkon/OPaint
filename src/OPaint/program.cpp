@@ -32,6 +32,7 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
 
 Program::~Program()
 {
+    delete penEvent;
     delete labelPixmap;
     delete pixmap;
     delete image;
@@ -51,6 +52,7 @@ void Program::init()
     initPixmap();
     initDrawingArea();
     initLabelPixmap();
+    initPenEvent();
 }
 
 void Program::initImage()
@@ -74,4 +76,13 @@ void Program::initLabelPixmap()
     labelPixmap = new LabelPixmap;
     labelPixmap->setLabel(mw->drawingArea());
     labelPixmap->setPixmap(pixmap);
+}
+
+void Program::initPenEvent()
+{
+    penEvent = new PenEvent;
+    penEvent->setMouse(mw->drawingArea()->mouse());
+    penEvent->setMouseButton(mw->drawingArea()->mouse()->leftButton());
+    penEvent->setLabelPixmap(labelPixmap);
+    penEvent->connect();
 }

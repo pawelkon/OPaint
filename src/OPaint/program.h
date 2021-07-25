@@ -29,6 +29,7 @@ SOFTWARE.
 
 #include <opaint/ui/MainWindow>
 #include <opaint/LabelPixmap>
+#include <opaint/PenEvent>
 
 namespace opaint {
 class Program : public QApplication
@@ -40,6 +41,7 @@ private:
     QImage *image = nullptr;
     QPixmap *pixmap = nullptr;
     LabelPixmap *labelPixmap = nullptr;
+    PenEvent *penEvent = nullptr;
 
 public:
     Program(int, char**);
@@ -51,6 +53,8 @@ public:
     void initPixmap();
     void initDrawingArea();
     void initLabelPixmap();
+    void initPenEvent();
+
 };
 } // namespace opaint
 
