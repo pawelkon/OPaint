@@ -44,6 +44,8 @@ public:
 
     bool isPressed();
 
+    Qt::MouseButton qtButton();
+
 protected:
     bool eventFilter(QObject*, QEvent*) override;
 

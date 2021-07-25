@@ -41,6 +41,11 @@ bool MouseButton::isPressed()
     return buttonPress;
 }
 
+Qt::MouseButton MouseButton::qtButton()
+{
+    return button;
+}
+
 bool MouseButton::eventFilter(QObject *obj, QEvent *ev)
 {
     pressEventFilter(ev);
