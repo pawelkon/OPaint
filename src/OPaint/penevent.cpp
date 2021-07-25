@@ -34,7 +34,8 @@ PenEvent::PenEvent(QObject *parent) : PaintEvent(parent)
 
 void PenEvent::connect()
 {
-
+    QObject::connect(mouseButton(), &MouseButton::pressed, this, &PenEvent::drawDot);
+    QObject::connect(mouse(), &Mouse::moveEvent, this, &PenEvent::drawLine);
 }
 
 void PenEvent::drawDot(QMouseEvent *ev)
