@@ -13,6 +13,7 @@ SOURCES += \
     debug.cpp \
     labelpixmap.cpp \
     mouse/mouse.cpp \
+    mouse/mousebutton.cpp \
     ui/drawingarea.cpp \
     main.cpp \
     ui/mainwindow.cpp \
@@ -23,6 +24,7 @@ HEADERS += \
     debug.h \
     labelpixmap.h \
     mouse/mouse.h \
+    mouse/mousebutton.h \
     ui/drawingarea.h \
     ui/mainwindow.h \
     program.h
