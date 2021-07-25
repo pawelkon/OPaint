@@ -62,7 +62,7 @@ void MouseButton::pressEventFilter(QEvent *ev)
 
 void MouseButton::releaseEventFilter(QEvent *ev)
 {
-    if(ev->type() == QEvent::MouseButtonPress)
+    if(ev->type() == QEvent::MouseButtonRelease)
         properReleased(static_cast<QMouseEvent*>(ev));
 }
 
@@ -77,7 +77,7 @@ void MouseButton::properPressed(QMouseEvent *ev)
 
 void MouseButton::properReleased(QMouseEvent *ev)
 {
-    if(ev->buttons() == button)
+    if(ev->button() == button)
     {
         buttonPress = false;
         emit released(ev);
