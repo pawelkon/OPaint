@@ -38,6 +38,10 @@ public:
 
     void connect() override;
 
+private slots:
+    void drawDot(QMouseEvent*);
+    void drawLine(QMouseEvent*);
+
 };
 } // namespace opaint
 

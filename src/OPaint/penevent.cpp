@@ -23,6 +23,8 @@ SOFTWARE.
 ********************************************************************************/
 #include "penevent.h"
 
+#include <QPainter>
+
 using namespace opaint;
 
 PenEvent::PenEvent(QObject *parent) : PaintEvent(parent)
@@ -33,4 +35,30 @@ PenEvent::PenEvent(QObject *parent) : PaintEvent(parent)
 void PenEvent::connect()
 {
 
+}
+
+void PenEvent::drawDot(QMouseEvent *ev)
+{
+    startingPoint = ev->localPos();
+
+    QPainter p;
+    p.begin(labelPixmap()->pixmap());
+    p.drawPoint(startingPoint);
+    p.end();
+
+    labelPixmap()->update();
+}
+
+void PenEvent::drawLine(QMouseEvent *ev)
+{
+    if(ev->buttons() == mouseButton()->qtButton())
+    {
+        QPainter p;
+        p.begin(labelPixmap()->pixmap());
+        p.drawLine(startingPoint, ev->localPos());
+        p.end();
+
+        startingPoint = ev->localPos();
+        labelPixmap()->update();
+    }
 }
