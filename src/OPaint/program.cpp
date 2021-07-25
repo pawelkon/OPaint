@@ -51,6 +51,7 @@ void Program::init()
     initPixmap();
     initDrawingArea();
     initLabelPixmap();
+    initPainter();
     initPenEvent();
 }
 
@@ -88,5 +89,6 @@ void Program::initPenEvent()
     penEvent->setMouse(mw->drawingArea()->mouse());
     penEvent->setMouseButton(mw->drawingArea()->mouse()->leftButton());
     penEvent->setLabelPixmap(labelPixmap);
+    penEvent->setPainter(painter);
     penEvent->connect();
 }
