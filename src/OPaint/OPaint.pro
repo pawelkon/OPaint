@@ -34,6 +34,7 @@ DISTFILES += \
     ../../include/opaint/AbstractPaintEvent \
     ../../include/opaint/Debug \
     ../../include/opaint/LabelPixmap \
+    ../../include/opaint/Mouse \
     ../../include/opaint/Program \
     ../../include/opaint/ui/DrawingArea \
     ../../include/opaint/ui/MainWindow
