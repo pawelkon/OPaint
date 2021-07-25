@@ -21,9 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
-#include "penevent.h"
 
-#include <QPainter>
+#include "penevent.h"
 
 using namespace opaint;
 
@@ -42,24 +41,18 @@ void PenEvent::drawDot(QMouseEvent *ev)
 {
     startingPoint = ev->localPos();
 
-    QPainter p;
-    p.begin(labelPixmap()->pixmap());
-    p.drawPoint(startingPoint);
-    p.end();
+    if(ptrcheck(painter())) painter()->drawPoint(startingPoint);
 
-    labelPixmap()->update();
+    if(ptrcheck(labelPixmap())) labelPixmap()->update();
 }
 
 void PenEvent::drawLine(QMouseEvent *ev)
 {
-    if(ev->buttons() == mouseButton()->qtButton())
+    if(ptrcheck(mouseButton()) && ev->buttons() == mouseButton()->qtButton())
     {
-        QPainter p;
-        p.begin(labelPixmap()->pixmap());
-        p.drawLine(startingPoint, ev->localPos());
-        p.end();
+        if(ptrcheck(painter())) painter()->drawLine(startingPoint, ev->localPos());
 
         startingPoint = ev->localPos();
-        labelPixmap()->update();
+        if(ptrcheck(labelPixmap())) labelPixmap()->update();
     }
 }
