@@ -28,13 +28,32 @@ using namespace opaint;
 
 Mouse::Mouse(QObject *parent) : QObject(parent)
 {
+    left = new MouseButton(Qt::LeftButton);
+    right = new MouseButton(Qt::RightButton);
+}
 
+Mouse::~Mouse()
+{
+    delete left; delete right;
+}
+
+const MouseButton * Mouse::leftButton() const
+{
+    return left;
+}
+
+const MouseButton * Mouse::rightButton() const
+{
+    return right;
 }
 
 bool Mouse::eventFilter(QObject *obj, QEvent *ev)
 {
     moveEventFilter(ev);
     wheelEventFilter(ev);
+
+    left->eventFilter( obj, ev);
+    right->eventFilter( obj, ev );
 
     return QObject::eventFilter( obj, ev );
 }

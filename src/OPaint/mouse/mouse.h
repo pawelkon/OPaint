@@ -29,13 +29,23 @@ SOFTWARE.
 #include <QMouseEvent>
 #include <QObject>
 
+#include <opaint/MouseButton>
+
 namespace opaint {
 class Mouse : public QObject
 {
     Q_OBJECT
 
+private:
+    MouseButton *left = nullptr;
+    MouseButton *right = nullptr;
+
 public:
     explicit Mouse(QObject *parent = nullptr);
+    ~Mouse();
+
+    const MouseButton * leftButton() const;
+    const MouseButton * rightButton() const;
 
 protected:
     bool eventFilter(QObject*, QEvent*) override;
