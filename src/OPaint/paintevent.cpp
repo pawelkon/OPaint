@@ -22,22 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef OPAINT_ABSTRACTPAINTEVENT_H
-#define OPAINT_ABSTRACTPAINTEVENT_H
+#include "paintevent.h"
 
-#include <QObject>
+using namespace opaint;
 
-namespace opaint {
-class AbstractPaintEvent : public QObject
+PaintEvent::PaintEvent(QObject *parent) : QObject(parent)
 {
-    Q_OBJECT
 
-protected:
-    explicit AbstractPaintEvent(QObject *parent = nullptr);
-
-signals:
-
-};
-} // namespace opaint
-
-#endif // OPAINT_ABSTRACTPAINTEVENT_H
+}
