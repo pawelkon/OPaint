@@ -30,3 +30,9 @@ MouseButton::MouseButton(QObject *parent) : QObject(parent)
 {
 
 }
+
+bool MouseButton::eventFilter(QObject *obj, QEvent *ev)
+{
+
+    return QObject::eventFilter( obj, ev );
+}

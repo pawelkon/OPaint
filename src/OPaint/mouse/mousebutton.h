@@ -38,6 +38,9 @@ private:
 public:
     explicit MouseButton(QObject *parent = nullptr);
 
+protected:
+    bool eventFilter(QObject*, QEvent*) override;
+
 signals:
 
 };
