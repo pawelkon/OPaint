@@ -38,8 +38,6 @@ private:
 public:
     explicit MouseButton(QObject *parent = nullptr);
 
-    Qt::MouseButton & operator =(const MouseButton&);
-
 signals:
 
 };
