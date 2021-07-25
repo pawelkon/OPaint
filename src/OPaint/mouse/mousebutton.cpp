@@ -40,3 +40,8 @@ void MouseButton::setQtButton(const Qt::MouseButton &button)
 {
     this->button = button;
 }
+
+Qt::MouseButton &MouseButton::operator =(const MouseButton &)
+{
+    return button;
+}

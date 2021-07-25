@@ -41,6 +41,8 @@ public:
     Qt::MouseButton qtButton();
     void setQtButton(const Qt::MouseButton&);
 
+    Qt::MouseButton & operator =(const MouseButton&);
+
 signals:
 
 };
