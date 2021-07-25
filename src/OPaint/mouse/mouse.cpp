@@ -33,6 +33,8 @@ Mouse::Mouse(QObject *parent) : QObject(parent)
 
 bool Mouse::eventFilter(QObject *obj, QEvent *ev)
 {
+    moveEventFilter(ev);
+
     return QObject::eventFilter( obj, ev );
 }
 
