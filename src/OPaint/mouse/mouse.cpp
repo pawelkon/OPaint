@@ -34,6 +34,7 @@ Mouse::Mouse(QObject *parent) : QObject(parent)
 bool Mouse::eventFilter(QObject *obj, QEvent *ev)
 {
     moveEventFilter(ev);
+    wheelEventFilter(ev);
 
     return QObject::eventFilter( obj, ev );
 }
@@ -42,4 +43,10 @@ void Mouse::moveEventFilter(QEvent *ev)
 {
     if(ev->type() == QEvent::MouseMove)
         emit moveEvent(static_cast<QMouseEvent*>(ev));
+}
+
+void Mouse::wheelEventFilter(QEvent *ev)
+{
+    if(ev->type() == QEvent::Wheel)
+        emit wheelEvent(static_cast<QWheelEvent*>(ev));
 }

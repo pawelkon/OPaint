@@ -42,9 +42,11 @@ protected:
 
 private:
     void moveEventFilter(QEvent*);
+    void wheelEventFilter(QEvent*);
 
 signals:
     void moveEvent(QMouseEvent*);
+    void wheelEvent(QWheelEvent*);
 
 };
 } // namespace opaint
