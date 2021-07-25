@@ -32,8 +32,14 @@ class MouseButton : public QObject
 {
     Q_OBJECT
 
+private:
+    Qt::MouseButton button;
+
 public:
     explicit MouseButton(QObject *parent = nullptr);
+
+    Qt::MouseButton qtButton();
+    void setQtButton(const Qt::MouseButton&);
 
 signals:
 
