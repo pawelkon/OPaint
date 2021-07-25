@@ -42,6 +42,8 @@ private:
     void setMouse(const Mouse*);
     void setMouseButton(const MouseButton*);
 
+    virtual void connect() = 0;
+
 protected:
     explicit PaintEvent(QObject *parent = nullptr);
 
