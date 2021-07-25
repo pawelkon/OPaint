@@ -28,5 +28,16 @@ using namespace opaint::ui;
 
 DrawingArea::DrawingArea()
 {
+    mous = new Mouse;
+    installEventFilter(mous);
+}
 
+DrawingArea::~DrawingArea()
+{
+    delete mous;
+}
+
+const opaint::Mouse *DrawingArea::mouse() const
+{
+    return mous;
 }

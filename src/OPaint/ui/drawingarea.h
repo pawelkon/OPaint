@@ -27,14 +27,22 @@ SOFTWARE.
 
 #include <QLabel>
 
+#include <opaint/Mouse>
+
 namespace opaint {
 namespace ui {
 class DrawingArea : public QLabel
 {
     Q_OBJECT
 
+private:
+    Mouse *mous;
+
 public:
     DrawingArea();
+    ~DrawingArea();
+
+    const Mouse * mouse() const;
 };
 
 } // namespace ui
