@@ -25,7 +25,7 @@ SOFTWARE.
 #ifndef OPAINT_PENEVENT_H
 #define OPAINT_PENEVENT_H
 
-#include "paintevent.h"
+#include <opaint/PaintEvent>
 
 namespace opaint {
 class PenEvent : public PaintEvent
