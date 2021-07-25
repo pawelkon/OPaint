@@ -35,6 +35,8 @@ LabelPixmap::LabelPixmap(QObject *parent) : QObject(parent)
 
 void LabelPixmap::setLabel(QLabel *label) { this->label = label; }
 
+QPixmap *LabelPixmap::pixmap() { return pix; }
+
 void LabelPixmap::setPixmap(QPixmap* pixmap) { pix = pixmap; }
 
 void LabelPixmap::update()

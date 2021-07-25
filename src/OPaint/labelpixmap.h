@@ -41,9 +41,11 @@ public:
     explicit LabelPixmap(QObject *parent = nullptr);
 
     void setLabel(QLabel*);
-    void setPixmap(QPixmap*);
-    void update();
 
+    QPixmap * pixmap();
+    void setPixmap(QPixmap*);
+
+    void update();
 
 signals:
 
