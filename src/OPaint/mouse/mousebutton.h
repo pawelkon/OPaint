@@ -34,6 +34,8 @@ class MouseButton : public QObject
 {
     Q_OBJECT
 
+    friend class Mouse;
+
 private:
     Qt::MouseButton button;
     bool buttonPress = false;
