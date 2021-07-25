@@ -39,6 +39,7 @@ private:
 
 public:
     explicit MouseButton(QObject *parent = nullptr);
+    MouseButton(const Qt::MouseButton& = Qt::NoButton);
 
 protected:
     bool eventFilter(QObject*, QEvent*) override;

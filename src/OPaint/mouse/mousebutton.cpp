@@ -31,6 +31,11 @@ MouseButton::MouseButton(QObject *parent) : QObject(parent)
 
 }
 
+MouseButton::MouseButton(const Qt::MouseButton &button)
+{
+    this->button = button;
+}
+
 bool MouseButton::eventFilter(QObject *obj, QEvent *ev)
 {
     pressEventFilter(ev);
