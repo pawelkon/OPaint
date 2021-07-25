@@ -40,11 +40,13 @@ private:
     const Mouse *mous = nullptr;
     const MouseButton *mousBtn = nullptr;
     LabelPixmap *lblpix = nullptr;
+    QPainter *pntr = nullptr;
 
 public:
     void setMouse(const Mouse*);
     void setMouseButton(const MouseButton*);
     void setLabelPixmap(LabelPixmap*);
+    void setPainter(QPainter*);
 
     virtual void connect() = 0;
 
@@ -54,6 +56,7 @@ protected:
     const Mouse * mouse();
     const MouseButton * mouseButton();
     LabelPixmap * labelPixmap();
+    QPainter * painter();
 
 signals:
 
