@@ -26,6 +26,7 @@ SOFTWARE.
 #define OPAINT_PROGRAM_H
 
 #include <QApplication>
+#include <QPainter>
 
 #include <opaint/ui/MainWindow>
 #include <opaint/LabelPixmap>
@@ -41,6 +42,7 @@ private:
     QImage *image = nullptr;
     QPixmap *pixmap = nullptr;
     LabelPixmap *labelPixmap = nullptr;
+    QPainter *painter = nullptr;
     PenEvent *penEvent = nullptr;
 
 public:
@@ -53,6 +55,7 @@ public:
     void initPixmap();
     void initDrawingArea();
     void initLabelPixmap();
+    void initPainter();
     void initPenEvent();
 
 };

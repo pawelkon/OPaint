@@ -24,8 +24,6 @@ SOFTWARE.
 
 #include "program.h"
 
-#include <QPainter>
-
 using namespace opaint;
 
 Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
@@ -33,6 +31,7 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
 Program::~Program()
 {
     delete penEvent;
+    delete painter;
     delete labelPixmap;
     delete pixmap;
     delete image;
@@ -76,6 +75,11 @@ void Program::initLabelPixmap()
     labelPixmap = new LabelPixmap;
     labelPixmap->setLabel(mw->drawingArea());
     labelPixmap->setPixmap(pixmap);
+}
+
+void Program::initPainter()
+{
+    painter = new QPainter(labelPixmap->pixmap());
 }
 
 void Program::initPenEvent()
