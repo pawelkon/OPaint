@@ -36,6 +36,11 @@ void PaintEvent::setMouseButton(const MouseButton *button)
     this->mousBtn = button;
 }
 
+void PaintEvent::setLabelPixmap(LabelPixmap *labelPixmap)
+{
+    this->lblpix = labelPixmap;
+}
+
 PaintEvent::PaintEvent(QObject *parent) : QObject(parent) {}
 
 const Mouse *PaintEvent::mouse()
@@ -46,4 +51,9 @@ const Mouse *PaintEvent::mouse()
 const MouseButton *PaintEvent::mouseButton()
 {
     return mousBtn;
+}
+
+LabelPixmap *PaintEvent::labelPixmap()
+{
+    return lblpix;
 }

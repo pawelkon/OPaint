@@ -29,6 +29,7 @@ SOFTWARE.
 
 #include <opaint/Mouse>
 #include <opaint/MouseButton>
+#include <opaint/LabelPixmap>
 
 namespace opaint {
 class PaintEvent : public QObject
@@ -38,10 +39,12 @@ class PaintEvent : public QObject
 private:
     const Mouse *mous = nullptr;
     const MouseButton *mousBtn = nullptr;
+    LabelPixmap *lblpix = nullptr;
 
 public:
     void setMouse(const Mouse*);
     void setMouseButton(const MouseButton*);
+    void setLabelPixmap(LabelPixmap*);
 
     virtual void connect() = 0;
 
@@ -50,6 +53,7 @@ protected:
 
     const Mouse * mouse();
     const MouseButton * mouseButton();
+    LabelPixmap * labelPixmap();
 
 signals:
 
