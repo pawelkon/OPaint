@@ -36,12 +36,12 @@ MouseButton::MouseButton(const Qt::MouseButton &button)
     this->button = button;
 }
 
-bool MouseButton::isPressed()
+bool MouseButton::isPressed() const
 {
     return buttonPress;
 }
 
-Qt::MouseButton MouseButton::qtButton()
+Qt::MouseButton MouseButton::qtButton() const
 {
     return button;
 }

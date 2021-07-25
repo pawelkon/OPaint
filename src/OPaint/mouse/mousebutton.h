@@ -44,9 +44,8 @@ public:
     explicit MouseButton(QObject *parent = nullptr);
     MouseButton(const Qt::MouseButton& = Qt::NoButton);
 
-    bool isPressed();
-
-    Qt::MouseButton qtButton();
+    bool isPressed() const;
+    Qt::MouseButton qtButton() const;
 
 protected:
     bool eventFilter(QObject*, QEvent*) override;
