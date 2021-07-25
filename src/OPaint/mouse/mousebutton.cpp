@@ -31,16 +31,6 @@ MouseButton::MouseButton(QObject *parent) : QObject(parent)
 
 }
 
-Qt::MouseButton MouseButton::qtButton()
-{
-    return button;
-}
-
-void MouseButton::setQtButton(const Qt::MouseButton &button)
-{
-    this->button = button;
-}
-
 Qt::MouseButton &MouseButton::operator =(const MouseButton &)
 {
     return button;
