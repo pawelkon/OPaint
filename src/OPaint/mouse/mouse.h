@@ -40,7 +40,11 @@ public:
 protected:
     bool eventFilter(QObject*, QEvent*) override;
 
+private:
+    void moveEventFilter(QEvent*);
+
 signals:
+    void moveEvent(QMouseEvent*);
 
 };
 } // namespace opaint

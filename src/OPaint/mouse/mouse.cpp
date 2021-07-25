@@ -35,3 +35,9 @@ bool Mouse::eventFilter(QObject *obj, QEvent *ev)
 {
     return QObject::eventFilter( obj, ev );
 }
+
+void Mouse::moveEventFilter(QEvent *ev)
+{
+    if(ev->type() == QEvent::MouseMove)
+        emit moveEvent(static_cast<QMouseEvent*>(ev));
+}
