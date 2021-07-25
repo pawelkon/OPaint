@@ -25,10 +25,11 @@ SOFTWARE.
 #ifndef OPAINT_MOUSE_H
 #define OPAINT_MOUSE_H
 
+#include <QEvent>
+#include <QMouseEvent>
 #include <QObject>
 
 namespace opaint {
-
 class Mouse : public QObject
 {
     Q_OBJECT
@@ -36,10 +37,12 @@ class Mouse : public QObject
 public:
     explicit Mouse(QObject *parent = nullptr);
 
+protected:
+    bool eventFilter(QObject*, QEvent*) override;
+
 signals:
 
 };
-
 } // namespace opaint
 
 #endif // OPAINT_MOUSE_H
