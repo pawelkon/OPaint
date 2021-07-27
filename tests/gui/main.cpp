@@ -29,7 +29,20 @@ Main::Main(QObject *parent) : QObject(parent)
 
 }
 
-int main( int , char** )
+void Main::start()
 {
 
+}
+
+int Main::retMain()
+{
+    return 0;
+}
+
+int main( int , char** )
+{
+    Main m;
+    m.start();
+
+    return m.retMain();
 }

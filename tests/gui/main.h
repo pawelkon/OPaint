@@ -33,6 +33,9 @@ class Main : public QObject
 public:
     explicit Main(QObject *parent = nullptr);
 
+    void start();
+    int retMain();
+
 signals:
 
 };
