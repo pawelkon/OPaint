@@ -27,16 +27,19 @@ SOFTWARE.
 
 Main::Main(int argc, char **argv)
 {
-
+    prog = new opaint::Program( argc, argv );
 }
 
 Main::~Main()
 {
-
+    delete prog;
 }
 
 void Main::start()
 {
+    prog->start();
+
+
 }
 
 int Main::retMain()

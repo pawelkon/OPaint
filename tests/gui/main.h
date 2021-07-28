@@ -27,9 +27,14 @@ SOFTWARE.
 
 #include <QObject>
 
+#include <opaint/Program>
+
 class Main : public QObject
 {
     Q_OBJECT
+
+private:
+    opaint::Program *prog;
 
 public:
     Main(int, char**);
