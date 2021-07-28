@@ -38,6 +38,8 @@ Program::~Program()
     delete mw;
 }
 
+ui::MainWindow * Program::mainWindow() { return mw; }
+
 void Program::start()
 {
     mw = new ui::MainWindow;

@@ -49,6 +49,8 @@ public:
     Program(int, char**);
     ~Program();
 
+    ui::MainWindow * mainWindow();
+
     void start();
     void init();
     void initImage();
