@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
+
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -31,7 +32,8 @@ class Main : public QObject
     Q_OBJECT
 
 public:
-    explicit Main(QObject *parent = nullptr);
+    Main(int, char**);
+    ~Main();
 
     void start();
     int retMain();

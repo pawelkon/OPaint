@@ -24,14 +24,19 @@ SOFTWARE.
 
 #include "main.h"
 
-Main::Main(QObject *parent) : QObject(parent)
+
+Main::Main(int argc, char **argv)
+{
+
+}
+
+Main::~Main()
 {
 
 }
 
 void Main::start()
 {
-
 }
 
 int Main::retMain()
@@ -39,9 +44,9 @@ int Main::retMain()
     return 0;
 }
 
-int main( int , char** )
+int main( int argc, char** argv)
 {
-    Main m;
+    Main m( argc, argv );
     m.start();
 
     return m.retMain();
