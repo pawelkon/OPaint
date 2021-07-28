@@ -17,7 +17,8 @@ SOURCES +=  \
     ../../src/OPaint/program.cpp \
     ../../src/OPaint/ui/drawingarea.cpp \
     ../../src/OPaint/ui/mainwindow.cpp \
-    main.cpp
+    main.cpp \
+    testsexec.cpp
 
 HEADERS += \
     ../../src/OPaint/debug.h \
@@ -29,7 +30,8 @@ HEADERS += \
     ../../src/OPaint/program.h \
     ../../src/OPaint/ui/drawingarea.h \
     ../../src/OPaint/ui/mainwindow.h \
-    main.h
+    main.h \
+    testsexec.h
 
 INCLUDEPATH += ../../include/
 INCLUDEPATH += ../../src/OPaint/
