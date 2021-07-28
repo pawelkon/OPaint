@@ -1,3 +1,5 @@
+QT += widgets
+QT += core
 QT += testlib
 QT += gui
 
