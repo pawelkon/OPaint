@@ -52,6 +52,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+protected:
+    void showEvent(QShowEvent *event) override;
+
+signals:
+    void showEventSignal(QShowEvent *event);
 };
 } // namespace ui
 } // namespace opaint

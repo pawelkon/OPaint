@@ -47,3 +47,8 @@ MainWindow::~MainWindow()
 
 DrawingArea * MainWindow::drawingArea() { return dArea; }
 
+void MainWindow::showEvent(QShowEvent *event)
+{
+    emit showEventSignal(event);
+}
+
