@@ -26,7 +26,10 @@ SOFTWARE.
 
 using namespace opaint;
 
-Program::Program(int argc, char **argv) : QApplication( argc, argv ) {}
+Program::Program(int argc, char **argv) : QApplication( argc, argv )
+{
+    mw = new ui::MainWindow;
+}
 
 Program::~Program()
 {
@@ -42,7 +45,7 @@ ui::MainWindow * Program::mainWindow() { return mw; }
 
 void Program::start()
 {
-    mw = new ui::MainWindow;
+
     init();
     mw->show();
 }
