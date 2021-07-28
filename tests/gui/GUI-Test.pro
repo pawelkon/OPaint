@@ -12,3 +12,6 @@ SOURCES +=  \
 
 HEADERS += \
     main.h
+
+INCLUDEPATH += ../../include/
+INCLUDEPATH += ../../src/OPaint/
