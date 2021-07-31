@@ -25,7 +25,7 @@ SOFTWARE.
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <QObject>
+#include <QTest>
 
 #include <opaint/Program>
 
@@ -34,17 +34,15 @@ class Main : public QObject
     Q_OBJECT
 
 private:
-    opaint::Program *prog;
+    opaint::Program *prog = nullptr;
 
 public:
     Main(int, char**);
     ~Main();
 
-    void start();
-    int retMain();
-
-signals:
-
+private slots:
+    void initTestCase();
+    void cleanupTestCase();
 };
 
 #endif // MAIN_H

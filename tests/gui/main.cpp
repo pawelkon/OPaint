@@ -24,10 +24,10 @@ SOFTWARE.
 
 #include "main.h"
 
-
 Main::Main(int argc, char **argv)
 {
-    prog = new opaint::Program( argc, argv );
+    prog = new opaint::Program( argc, argv);
+    prog->start();
 }
 
 Main::~Main()
@@ -35,22 +35,13 @@ Main::~Main()
     delete prog;
 }
 
-void Main::start()
-{
-    prog->start();
+void Main::initTestCase() {}
 
+void Main::cleanupTestCase() {}
 
-}
-
-int Main::retMain()
-{
-    return 0;
-}
-
-int main( int argc, char** argv)
+int main(int argc, char** argv)
 {
     Main m( argc, argv );
-    m.start();
-
-    return m.retMain();
+    return QTest::qExec( &m, argc, argv );
 }
+
