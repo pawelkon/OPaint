@@ -22,28 +22,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef MAIN_H
-#define MAIN_H
+#include "blackdrawing.h"
 
-#include <QTest>
+#include <QThread>
 
-#include <opaint/Program>
-
-class Main : public QObject
+void BlackDrawing::setWindow(opaint::ui::MainWindow *mw)
 {
-    Q_OBJECT
+    this->mw = mw;
+}
 
-private:
-    opaint::Program *prog = nullptr;
+void BlackDrawing::initTestCase()
+{
 
-public:
-    Main(int, char**);
-    ~Main();
+    startPoint = QPoint(5,5);
+    endPoint = QPoint(50,50);
+    img = QImage(mw->drawingArea()->pixmap()->toImage());
 
-private slots:
-    void initTestCase();
-    void blackDrawing();
-    void cleanupTestCase();
-};
+    QPainter p;
+    p.begin(&img);
+    p.drawLine(startPoint, endPoint);
+    p.end();
 
-#endif // MAIN_H
+}
+
+void BlackDrawing::test()
+{
+
+    initTestCase();
+
+    QMouseEvent press(QEvent::MouseButtonPress, startPoint, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(mw->drawingArea(), &press);
+
+    QMouseEvent move(QEvent::MouseMove, endPoint, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(mw->drawingArea(), &move);
+
+    QCOMPARE(mw->drawingArea()->pixmap()->toImage(), img);
+
+}
+

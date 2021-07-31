@@ -22,28 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef BLACKDRAWING_H
+#define BLACKDRAWING_H
 
 #include <QTest>
+#include <QPainter>
 
-#include <opaint/Program>
+#include <opaint/ui/MainWindow>
 
-class Main : public QObject
+class BlackDrawing : public QObject
 {
     Q_OBJECT
 
 private:
-    opaint::Program *prog = nullptr;
+    QPoint startPoint, endPoint;
+    QImage img;
+    opaint::ui::MainWindow *mw;
 
 public:
-    Main(int, char**);
-    ~Main();
+    void setWindow(opaint::ui::MainWindow *);
 
-private slots:
+public slots:
     void initTestCase();
-    void blackDrawing();
-    void cleanupTestCase();
+    void test();
 };
 
-#endif // MAIN_H
+#endif // BLACKDRAWING_H

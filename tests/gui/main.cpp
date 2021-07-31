@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
+#include "blackdrawing.h"
 #include "main.h"
 
 Main::Main(int argc, char **argv)
@@ -36,6 +37,13 @@ Main::~Main()
 }
 
 void Main::initTestCase() {}
+
+void Main::blackDrawing()
+{
+    BlackDrawing bd;
+    bd.setWindow(prog->mainWindow());
+    bd.test();
+}
 
 void Main::cleanupTestCase() {}
 
