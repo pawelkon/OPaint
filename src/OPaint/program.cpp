@@ -33,10 +33,10 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv )
 
 Program::~Program()
 {
+    delete paintColor;
     delete penEvent;
+    delete painterTools;
     delete painter;
-    delete brush;
-    delete pen;
     delete labelPixmap;
     delete pixmap;
     delete image;
@@ -58,10 +58,10 @@ void Program::init()
     initPixmap();
     initDrawingArea();
     initLabelPixmap();
-    initPen();
-    initBrush();
     initPainter();
+    initPainterTools();
     initPenEvent();
+    initPaintColor();
 }
 
 void Program::initImage()
@@ -87,16 +87,12 @@ void Program::initLabelPixmap()
     labelPixmap->setPixmap(pixmap);
 }
 
-void Program::initPen() { pen = new QPen; }
-
-void Program::initBrush() { brush = new QBrush; }
-
 void Program::initPainter()
 {
     painter = new QPainter(labelPixmap->pixmap());
-    painter->setPen(*pen);
-    painter->setBrush(*brush);
 }
+
+void Program::initPainterTools() { painterTools = new PainterTools(painter); }
 
 void Program::initPenEvent()
 {
@@ -106,4 +102,12 @@ void Program::initPenEvent()
     penEvent->setLabelPixmap(labelPixmap);
     penEvent->setPainter(painter);
     penEvent->connect();
+}
+
+void Program::initPaintColor()
+{
+    paintColor = new PaintColor;
+    paintColor->setColorWidget(mw->colorWidget());
+    paintColor->setPainterTools(painterTools);
+    paintColor->connect();
 }

@@ -31,6 +31,7 @@ SOFTWARE.
 #include <opaint/ui/MainWindow>
 #include <opaint/LabelPixmap>
 #include <opaint/PenEvent>
+#include <opaint/PainterTools>
 #include <opaint/PaintColor>
 
 namespace opaint {
@@ -43,9 +44,8 @@ private:
     QImage *image = nullptr;
     QPixmap *pixmap = nullptr;
     LabelPixmap *labelPixmap = nullptr;
-    QPen *pen = nullptr;
-    QBrush *brush = nullptr;
     QPainter *painter = nullptr;
+    PainterTools *painterTools = nullptr;
     PenEvent *penEvent = nullptr;
     PaintColor *paintColor = nullptr;
 
@@ -61,10 +61,10 @@ public:
     void initPixmap();
     void initDrawingArea();
     void initLabelPixmap();
-    void initPen();
-    void initBrush();
     void initPainter();
+    void initPainterTools();
     void initPenEvent();
+    void initPaintColor();
 
 };
 } // namespace opaint
