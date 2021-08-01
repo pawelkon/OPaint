@@ -42,5 +42,8 @@ void LabelPixmap::setPixmap(QPixmap* pixmap) { pix = pixmap; }
 void LabelPixmap::update()
 {
     if(ptrcheck(label) && ptrcheck(pix))
+    {
+        label->setMaximumSize(pix->width(), pix->height());
         label->setPixmap(*pix);
+    }
 }
