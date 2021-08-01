@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     centralLayout = new QVBoxLayout;
+    centralLayout->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     this->centralWidget()->setLayout(centralLayout);
 
     colorWidget = new ColorWidget;
