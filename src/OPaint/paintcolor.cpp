@@ -31,14 +31,15 @@ PaintColor::PaintColor(QObject *parent) : QObject(parent)
 
 }
 
-void PaintColor::setColorWidget(ui::ColorWidget *widget)
+void PaintColor::setPainterTools(PainterTools *tools)
 {
-    colWidget = widget;
+    if( ptrcheck(tools) ) this->tools = tools;
 }
 
-void PaintColor::setPen(QPen *pen) { this->pen = pen; }
-
-void PaintColor::setBrush(QBrush *brush) { this->brush = brush; }
+void PaintColor::setColorWidget(ui::ColorWidget *widget)
+{
+    if( ptrcheck(widget) ) colWidget = widget;
+}
 
 void PaintColor::connect()
 {
@@ -48,9 +49,10 @@ void PaintColor::connect()
 
 void PaintColor::changeColor(QColor color)
 {
-    if(ptrcheck(pen))
-        pen->setColor(color);
-
-    if(ptrcheck(brush))
-        brush->setColor(color);
+    if( ptrcheck(tools) )
+    {
+        tools->pen()->setColor( color );
+        tools->brush()->setColor( color );
+        tools->updatePainter();
+    }
 }

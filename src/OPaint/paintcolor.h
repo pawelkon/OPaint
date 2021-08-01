@@ -30,6 +30,7 @@ SOFTWARE.
 
 #include <opaint/Debug>
 #include <opaint/ui/ColorWidget>
+#include <opaint/PainterTools>
 
 namespace opaint {
 class PaintColor : public QObject
@@ -38,15 +39,13 @@ class PaintColor : public QObject
 
 private:
     ui::ColorWidget *colWidget = nullptr;
-    QPen *pen = nullptr;
-    QBrush *brush = nullptr;
+    PainterTools *tools = nullptr;
 
 public:
     explicit PaintColor(QObject *parent = nullptr);
 
+    void setPainterTools(PainterTools*);
     void setColorWidget(ui::ColorWidget*);
-    void setPen(QPen*);
-    void setBrush(QBrush*);
 
     void connect();
 
