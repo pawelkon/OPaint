@@ -22,14 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef GUI_H
+#define GUI_H
 
 #include <QTest>
 
 #include <opaint/Program>
 
-class Main : public QObject
+class Gui : public QObject
 {
     Q_OBJECT
 
@@ -37,8 +37,8 @@ private:
     opaint::Program *prog = nullptr;
 
 public:
-    Main();
-    ~Main();
+    Gui();
+    ~Gui();
 
     void start(int, char**);
 
@@ -48,4 +48,4 @@ private slots:
     void cleanupTestCase();
 };
 
-#endif // MAIN_H
+#endif // GUI_H

@@ -18,7 +18,7 @@ SOURCES +=  \
     ../../src/OPaint/ui/drawingarea.cpp \
     ../../src/OPaint/ui/mainwindow.cpp \
     blackdrawing.cpp \
-    main.cpp
+    gui.cpp
 
 HEADERS += \
     ../../src/OPaint/debug.h \
@@ -31,7 +31,7 @@ HEADERS += \
     ../../src/OPaint/ui/drawingarea.h \
     ../../src/OPaint/ui/mainwindow.h \
     blackdrawing.h \
-    main.h
+    gui.h
 
 INCLUDEPATH += ../../include/
 INCLUDEPATH += ../../src/OPaint/

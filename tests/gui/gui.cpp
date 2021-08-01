@@ -23,35 +23,35 @@ SOFTWARE.
 ********************************************************************************/
 
 #include "blackdrawing.h"
-#include "main.h"
+#include "gui.h"
 
-Main::Main() {}
+Gui::Gui() {}
 
-Main::~Main()
+Gui::~Gui()
 {
     delete prog;
 }
 
-void Main::start(int argc, char **argv)
+void Gui::start(int argc, char **argv)
 {
     prog = new opaint::Program( argc, argv);
     prog->start();
 }
 
-void Main::initTestCase() {}
+void Gui::initTestCase() {}
 
-void Main::blackDrawing()
+void Gui::blackDrawing()
 {
     BlackDrawing bd;
     bd.setWindow(prog->mainWindow());
     bd.test();
 }
 
-void Main::cleanupTestCase() {}
+void Gui::cleanupTestCase() {}
 
 int main(int argc, char** argv)
 {
-    Main m;
+    Gui m;
     m.start( argc, argv );
     return QTest::qExec( &m, argc, argv );
 }
