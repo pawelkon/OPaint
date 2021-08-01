@@ -30,3 +30,27 @@ PaintColor::PaintColor(QObject *parent) : QObject(parent)
 {
 
 }
+
+void PaintColor::setColorWidget(ui::ColorWidget *widget)
+{
+    colWidget = widget;
+}
+
+void PaintColor::setPen(QPen *pen) { this->pen = pen; }
+
+void PaintColor::setBrush(QBrush *brush) { this->brush = brush; }
+
+void PaintColor::connect()
+{
+    if(ptrcheck(colWidget))
+        QObject::connect(colWidget, &ui::ColorWidget::colorChanged, this, &PaintColor::changeColor);
+}
+
+void PaintColor::changeColor(QColor color)
+{
+    if(ptrcheck(pen))
+        pen->setColor(color);
+
+    if(ptrcheck(brush))
+        brush->setColor(color);
+}

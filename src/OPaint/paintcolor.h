@@ -26,14 +26,32 @@ SOFTWARE.
 #define OPAINT_PAINTCOLOR_H
 
 #include <QObject>
+#include <QPainter>
+
+#include <opaint/Debug>
+#include <opaint/ui/ColorWidget>
 
 namespace opaint {
 class PaintColor : public QObject
 {
     Q_OBJECT
 
+private:
+    ui::ColorWidget *colWidget = nullptr;
+    QPen *pen = nullptr;
+    QBrush *brush = nullptr;
+
 public:
     explicit PaintColor(QObject *parent = nullptr);
+
+    void setColorWidget(ui::ColorWidget*);
+    void setPen(QPen*);
+    void setBrush(QBrush*);
+
+    void connect();
+
+private slots:
+    void changeColor(QColor);
 
 signals:
 
