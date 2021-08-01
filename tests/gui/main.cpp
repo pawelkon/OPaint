@@ -25,15 +25,17 @@ SOFTWARE.
 #include "blackdrawing.h"
 #include "main.h"
 
-Main::Main(int argc, char **argv)
-{
-    prog = new opaint::Program( argc, argv);
-    prog->start();
-}
+Main::Main() {}
 
 Main::~Main()
 {
     delete prog;
+}
+
+void Main::start(int argc, char **argv)
+{
+    prog = new opaint::Program( argc, argv);
+    prog->start();
 }
 
 void Main::initTestCase() {}
@@ -49,7 +51,8 @@ void Main::cleanupTestCase() {}
 
 int main(int argc, char** argv)
 {
-    Main m( argc, argv );
+    Main m;
+    m.start( argc, argv );
     return QTest::qExec( &m, argc, argv );
 }
 

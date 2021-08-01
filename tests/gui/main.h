@@ -37,8 +37,10 @@ private:
     opaint::Program *prog = nullptr;
 
 public:
-    Main(int, char**);
+    Main();
     ~Main();
+
+    void start(int, char**);
 
 private slots:
     void initTestCase();
