@@ -13,6 +13,7 @@ SOURCES += \
     labelpixmap.cpp \
     mouse/mouse.cpp \
     mouse/mousebutton.cpp \
+    paintcolor.cpp \
     paintevent.cpp \
     penevent.cpp \
     ui/colorwidget.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     labelpixmap.h \
     mouse/mouse.h \
     mouse/mousebutton.h \
+    paintcolor.h \
     paintevent.h \
     penevent.h \
     ui/colorwidget.h \
@@ -41,6 +43,7 @@ DISTFILES += \
     ../../include/opaint/LabelPixmap \
     ../../include/opaint/Mouse \
     ../../include/opaint/MouseButton \
+    ../../include/opaint/PaintColor \
     ../../include/opaint/PaintEvent \
     ../../include/opaint/PenEvent \
     ../../include/opaint/Program \
