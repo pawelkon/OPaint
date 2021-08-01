@@ -37,8 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
     centralLayout->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     this->centralWidget()->setLayout(centralLayout);
 
-    colorWidget = new ColorWidget;
-    this->centralLayout->addWidget(colorWidget);
+    colWidget = new ColorWidget;
+    this->centralLayout->addWidget(colWidget);
 
     dArea = new DrawingArea;
     this->centralLayout->addWidget(dArea);
@@ -46,8 +46,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete dArea; delete colorWidget; delete centralLayout; delete ui;
+    delete dArea; delete colWidget; delete centralLayout; delete ui;
 }
+
+ColorWidget * MainWindow::colorWidget() { return colWidget; }
 
 DrawingArea * MainWindow::drawingArea() { return dArea; }
 

@@ -43,13 +43,14 @@ class MainWindow : public QMainWindow
 
 private:
     QVBoxLayout *centralLayout;
-    ColorWidget *colorWidget = nullptr;
+    ColorWidget *colWidget = nullptr;
     DrawingArea *dArea;
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    ColorWidget * colorWidget();
     DrawingArea * drawingArea();
 
 private:
