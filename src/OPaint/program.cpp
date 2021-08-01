@@ -35,6 +35,8 @@ Program::~Program()
 {
     delete penEvent;
     delete painter;
+    delete brush;
+    delete pen;
     delete labelPixmap;
     delete pixmap;
     delete image;
@@ -56,6 +58,8 @@ void Program::init()
     initPixmap();
     initDrawingArea();
     initLabelPixmap();
+    initPen();
+    initBrush();
     initPainter();
     initPenEvent();
 }
@@ -83,9 +87,15 @@ void Program::initLabelPixmap()
     labelPixmap->setPixmap(pixmap);
 }
 
+void Program::initPen() { pen = new QPen; }
+
+void Program::initBrush() { brush = new QBrush; }
+
 void Program::initPainter()
 {
     painter = new QPainter(labelPixmap->pixmap());
+    painter->setPen(*pen);
+    painter->setBrush(*brush);
 }
 
 void Program::initPenEvent()
