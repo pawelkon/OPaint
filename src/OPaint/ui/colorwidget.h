@@ -25,6 +25,9 @@ SOFTWARE.
 #ifndef OPAINT_UI_COLORWIDGET_H
 #define OPAINT_UI_COLORWIDGET_H
 
+#include <QLabel>
+#include <QSlider>
+#include <QVBoxLayout>
 #include <QWidget>
 
 namespace opaint {
@@ -34,9 +37,31 @@ class ColorWidget : public QWidget
     Q_OBJECT
 
 public:
+    const static Qt::Orientation sliderOrientation = Qt::Horizontal;
+    const static int minSlider = 0;
+    const static int maxSlider = 255;
+
+private:
+    QHBoxLayout *lay = nullptr;
+    QSlider *redSlider = nullptr, *greenSlider = nullptr, *blueSlider = nullptr;
+    QLabel *colorView = nullptr;
+
+public:
     explicit ColorWidget(QWidget *parent = nullptr);
+    ~ColorWidget();
+
+    void connect();
+    QColor currentColor() const;
+
+private:
+    void setSlider(QSlider*);
+
+private slots:
+    void sliderValueChanged(int);
+    void updateColorView(QColor);
 
 signals:
+    void colorChanged(QColor);
 
 };
 } // namespace ui

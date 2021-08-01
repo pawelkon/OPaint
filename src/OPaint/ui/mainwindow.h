@@ -28,6 +28,7 @@ SOFTWARE.
 #include <QMainWindow>
 #include <QVBoxLayout>
 
+#include <opaint/ui/ColorWidget>
 #include <opaint/ui/DrawingArea>
 
 QT_BEGIN_NAMESPACE
@@ -42,6 +43,7 @@ class MainWindow : public QMainWindow
 
 private:
     QVBoxLayout *centralLayout;
+    ColorWidget *colorWidget = nullptr;
     DrawingArea *dArea;
 
 public:

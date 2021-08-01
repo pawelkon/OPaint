@@ -28,5 +28,78 @@ using namespace opaint::ui;
 
 ColorWidget::ColorWidget(QWidget *parent) : QWidget(parent)
 {
+    this->setMinimumSize(500,50);
+    this->setMaximumSize(500,50);
 
+    lay = new QHBoxLayout;
+    setLayout(lay);
+
+    redSlider = new QSlider();
+    setSlider(redSlider);
+
+    greenSlider = new QSlider();
+    setSlider(greenSlider);
+
+    blueSlider = new QSlider();
+    setSlider(blueSlider);
+
+    colorView = new QLabel;
+    colorView->setMinimumSize(30,30);
+    colorView->setMaximumSize(30,30);
+    updateColorView(currentColor());
+    lay->addWidget(colorView);
+
+    connect();
+}
+
+ColorWidget::~ColorWidget()
+{
+    delete colorView;
+
+    delete blueSlider;
+    delete greenSlider;
+    delete redSlider;
+
+    delete lay;
+}
+
+void ColorWidget::connect()
+{
+    QObject::connect(redSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
+    QObject::connect(greenSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
+    QObject::connect(blueSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
+}
+
+QColor ColorWidget::currentColor() const
+{
+    auto red = redSlider->value();
+    auto green = greenSlider->value();
+    auto blue = blueSlider->value();
+
+    QColor color(red, green, blue);
+    return color;
+}
+
+void ColorWidget::setSlider(QSlider *slider)
+{
+    slider->setOrientation(sliderOrientation);
+    slider->setMinimum(minSlider);
+    slider->setMaximum(maxSlider);
+
+    this->lay->addWidget(slider);
+}
+
+void ColorWidget::sliderValueChanged(int)
+{
+    updateColorView(currentColor());
+    emit colorChanged(currentColor());
+}
+
+void ColorWidget::updateColorView(QColor color)
+{
+    colorView->setStyleSheet(QString("background-color: rgb(%1, %2, %3)")
+                             .arg(color.red())
+                             .arg(color.green())
+                             .arg(color.blue())
+                            );
 }
