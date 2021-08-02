@@ -88,6 +88,13 @@ QColor ColorWidget::currentColor() const
     return color;
 }
 
+void ColorWidget::setSliderValues(int red, int green, int blue)
+{
+    rSlider->setValue(red);
+    gSlider->setValue(green);
+    bSlider->setValue(blue);
+}
+
 void ColorWidget::setSlider(QSlider *slider)
 {
     slider->setOrientation(sliderOrientation);
