@@ -45,10 +45,14 @@ public:
     void start(int, char**);
 
 private slots:
-    void initTestCase();
-    void blackDrawing();
     void ColorChoice();
-    void cleanupTestCase();
+
+    void drawLine(const QColor&);
+    void drawBlackLine();
+    void drawRedLine();
+    void drawGreenLine();
+    void drawBlueLine();
+    void drawWhiteLine();
 };
 
 #endif // GUI_H

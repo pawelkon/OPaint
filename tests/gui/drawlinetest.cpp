@@ -22,41 +22,48 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#include "blackdrawing.h"
+#include "drawlinetest.h"
 
-#include <QThread>
-
-void BlackDrawing::setWindow(opaint::ui::MainWindow *mw)
+DrawLineTest::DrawLineTest(QObject *parent) : QObject( parent )
 {
-    this->mw = mw;
-}
-
-void BlackDrawing::initTestCase()
-{
-
     startPoint = QPoint(5,5);
     endPoint = QPoint(50,50);
-    img = QImage(mw->drawingArea()->pixmap()->toImage());
+}
+
+void DrawLineTest::setLabel(QLabel *label)
+{
+    this->label = label;
+}
+
+void DrawLineTest::setColorWidget(opaint::ui::ColorWidget *widget)
+{
+    colorWidget = widget;
+}
+
+void DrawLineTest::setColor(const QColor &color)
+{
+    this->color = color;
+}
+
+void DrawLineTest::exec()
+{
+    colorWidget->setColor(color);
+
+    img = QImage(label->pixmap()->toImage());
 
     QPainter p;
     p.begin(&img);
+    p.setPen(color);
+    p.setBrush(color);
     p.drawLine(startPoint, endPoint);
     p.end();
 
-}
-
-void BlackDrawing::test()
-{
-
-    initTestCase();
-
     QMouseEvent press(QEvent::MouseButtonPress, startPoint, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
-    QApplication::sendEvent(mw->drawingArea(), &press);
+    QApplication::sendEvent(label, &press);
 
     QMouseEvent move(QEvent::MouseMove, endPoint, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
-    QApplication::sendEvent(mw->drawingArea(), &move);
+    QApplication::sendEvent(label, &move);
 
-    QCOMPARE(mw->drawingArea()->pixmap()->toImage(), img);
-
+    QCOMPARE(label->pixmap()->toImage(), img);
 }
 

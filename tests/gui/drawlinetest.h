@@ -27,24 +27,28 @@ SOFTWARE.
 
 #include <QTest>
 #include <QPainter>
+#include <QLabel>
 
-#include <opaint/ui/MainWindow>
+#include <opaint/ui/ColorWidget>
 
-class BlackDrawing : public QObject
+class DrawLineTest : public QObject
 {
     Q_OBJECT
 
 private:
     QPoint startPoint, endPoint;
+    QColor color = Qt::black;
     QImage img;
-    opaint::ui::MainWindow *mw;
+    QLabel *label = nullptr;
+    opaint::ui::ColorWidget* colorWidget = nullptr;
 
 public:
-    void setWindow(opaint::ui::MainWindow *);
+    explicit DrawLineTest(QObject* = nullptr);
+    void setLabel(QLabel*);
+    void setColorWidget(opaint::ui::ColorWidget*);
 
-public slots:
-    void initTestCase();
-    void test();
+    void setColor(const QColor&);
+    void exec();
 };
 
 #endif // BLACKDRAWING_H

@@ -20,8 +20,8 @@ SOURCES +=  \
     ../../src/OPaint/ui/colorwidget.cpp \
     ../../src/OPaint/ui/drawingarea.cpp \
     ../../src/OPaint/ui/mainwindow.cpp \
-    blackdrawing.cpp \
     colorchoice.cpp \
+    drawlinetest.cpp \
     gui.cpp
 
 HEADERS += \
@@ -37,8 +37,8 @@ HEADERS += \
     ../../src/OPaint/ui/colorwidget.h \
     ../../src/OPaint/ui/drawingarea.h \
     ../../src/OPaint/ui/mainwindow.h \
-    blackdrawing.h \
     colorchoice.h \
+    drawlinetest.h \
     gui.h
 
 INCLUDEPATH += ../../include/
