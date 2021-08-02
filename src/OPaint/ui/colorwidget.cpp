@@ -95,6 +95,13 @@ void ColorWidget::setSliderValues(int red, int green, int blue)
     bSlider->setValue(blue);
 }
 
+void ColorWidget::setColor(const QColor &color)
+{
+    setSliderValues(color.red(),
+                    color.green(),
+                    color.blue());
+}
+
 void ColorWidget::setSlider(QSlider *slider)
 {
     slider->setOrientation(sliderOrientation);

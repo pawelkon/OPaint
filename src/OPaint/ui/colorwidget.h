@@ -59,6 +59,7 @@ public:
     QColor currentColor() const;
 
     void setSliderValues(int, int, int);
+    void setColor(const QColor&);
 
 private:
     void setSlider(QSlider*);
