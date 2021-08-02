@@ -47,6 +47,13 @@ void Gui::blackDrawing()
     bd.test();
 }
 
+void Gui::ColorChoice()
+{
+    class ColorChoice cch(prog->mainWindow()->colorWidget());
+    cch.test();
+}
+
+
 void Gui::cleanupTestCase() {}
 
 int main(int argc, char** argv)

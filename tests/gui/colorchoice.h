@@ -1,4 +1,4 @@
-/*******************************************************************************
+﻿/*******************************************************************************
 MIT License
 
 Copyright (c) 2021 pawelkon
@@ -22,33 +22,32 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef GUI_H
-#define GUI_H
-
-#include "colorchoice.h"
+#ifndef COLORCHOICE_H
+#define COLORCHOICE_H
 
 #include <QTest>
 
-#include <opaint/Program>
+#include <opaint/ui/ColorWidget>
 
-class Gui : public QObject
+class ColorChoice : public QObject
 {
     Q_OBJECT
 
 private:
-    opaint::Program *prog = nullptr;
+    opaint::ui::ColorWidget *widget = nullptr;
 
 public:
-    Gui();
-    ~Gui();
+    explicit ColorChoice(opaint::ui::ColorWidget*, QObject *parent = nullptr);
 
-    void start(int, char**);
+public slots:
+    void test();
 
-private slots:
-    void initTestCase();
-    void blackDrawing();
-    void ColorChoice();
-    void cleanupTestCase();
+private:
+    void colorTest(QColor);
+    void setSliderValues(int, int, int);
+
+signals:
+
 };
 
-#endif // GUI_H
+#endif // COLORCHOICE_H

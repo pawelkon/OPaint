@@ -22,33 +22,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef GUI_H
-#define GUI_H
-
 #include "colorchoice.h"
 
-#include <QTest>
-
-#include <opaint/Program>
-
-class Gui : public QObject
+ColorChoice::ColorChoice(opaint::ui::ColorWidget *widget, QObject *parent) : QObject( parent )
 {
-    Q_OBJECT
+    this->widget = widget;
+}
 
-private:
-    opaint::Program *prog = nullptr;
+void ColorChoice::test()
+{
+    colorTest(Qt::black);
+    colorTest(Qt::white);
+    colorTest(Qt::red);
+    colorTest(Qt::green);
+    colorTest(Qt::blue);
+}
 
-public:
-    Gui();
-    ~Gui();
+void ColorChoice::colorTest(QColor color)
+{
+    setSliderValues(color.red(), color.green(), color.blue());
 
-    void start(int, char**);
+    auto widgetColor = widget->colorView()->styleSheet();
 
-private slots:
-    void initTestCase();
-    void blackDrawing();
-    void ColorChoice();
-    void cleanupTestCase();
-};
+    QString styleSheet(QString("background-color: rgb(%1, %2, %3)")
+                             .arg(color.red())
+                             .arg(color.green())
+                             .arg(color.blue())
+                            );
 
-#endif // GUI_H
+    QCOMPARE(widgetColor, styleSheet);
+}
+
+void ColorChoice::setSliderValues(int red, int green, int blue)
+{
+    widget->redSlider()->setValue(red);
+    widget->greenSlider()->setValue(green);
+    widget->blueSlider()->setValue(blue);
+}
