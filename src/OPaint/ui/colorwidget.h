@@ -43,12 +43,17 @@ public:
 
 private:
     QHBoxLayout *lay = nullptr;
-    QSlider *redSlider = nullptr, *greenSlider = nullptr, *blueSlider = nullptr;
-    QLabel *colorView = nullptr;
+    QSlider *rSlider = nullptr, *gSlider = nullptr, *bSlider = nullptr;
+    QLabel *colView = nullptr;
 
 public:
     explicit ColorWidget(QWidget *parent = nullptr);
     ~ColorWidget();
+
+    QSlider * redSlider();
+    QSlider * greenSlider();
+    QSlider * blueSlider();
+    QLabel * colorView();
 
     void connect();
     QColor currentColor() const;

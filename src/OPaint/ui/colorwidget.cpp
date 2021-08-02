@@ -34,47 +34,55 @@ ColorWidget::ColorWidget(QWidget *parent) : QWidget(parent)
     lay = new QHBoxLayout;
     setLayout(lay);
 
-    redSlider = new QSlider();
-    setSlider(redSlider);
+    rSlider = new QSlider();
+    setSlider(rSlider);
 
-    greenSlider = new QSlider();
-    setSlider(greenSlider);
+    gSlider = new QSlider();
+    setSlider(gSlider);
 
-    blueSlider = new QSlider();
-    setSlider(blueSlider);
+    bSlider = new QSlider();
+    setSlider(bSlider);
 
-    colorView = new QLabel;
-    colorView->setMinimumSize(30,30);
-    colorView->setMaximumSize(30,30);
+    colView = new QLabel;
+    colView->setMinimumSize(30,30);
+    colView->setMaximumSize(30,30);
     updateColorView(currentColor());
-    lay->addWidget(colorView);
+    lay->addWidget(colView);
 
     connect();
 }
 
 ColorWidget::~ColorWidget()
 {
-    delete colorView;
+    delete colView;
 
-    delete blueSlider;
-    delete greenSlider;
-    delete redSlider;
+    delete bSlider;
+    delete gSlider;
+    delete rSlider;
 
     delete lay;
 }
 
+QSlider * ColorWidget::redSlider() { return rSlider; }
+
+QSlider * ColorWidget::greenSlider() { return gSlider; }
+
+QSlider * ColorWidget::blueSlider() { return bSlider; }
+
+QLabel * ColorWidget::colorView() { return colView; }
+
 void ColorWidget::connect()
 {
-    QObject::connect(redSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
-    QObject::connect(greenSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
-    QObject::connect(blueSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
+    QObject::connect(rSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
+    QObject::connect(gSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
+    QObject::connect(bSlider, &QSlider::valueChanged, this, &ColorWidget::sliderValueChanged);
 }
 
 QColor ColorWidget::currentColor() const
 {
-    auto red = redSlider->value();
-    auto green = greenSlider->value();
-    auto blue = blueSlider->value();
+    auto red = rSlider->value();
+    auto green = gSlider->value();
+    auto blue = bSlider->value();
 
     QColor color(red, green, blue);
     return color;
@@ -97,7 +105,7 @@ void ColorWidget::sliderValueChanged(int)
 
 void ColorWidget::updateColorView(QColor color)
 {
-    colorView->setStyleSheet(QString("background-color: rgb(%1, %2, %3)")
+    colView->setStyleSheet(QString("background-color: rgb(%1, %2, %3)")
                              .arg(color.red())
                              .arg(color.green())
                              .arg(color.blue())
