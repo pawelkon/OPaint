@@ -24,30 +24,12 @@ SOFTWARE.
 
 #include "ts_colorwidget.h"
 
-int main(int argc, char** argv)
-{
-    opaint::test::ColorWidget m;
-    m.start( argc, argv );
-    return QTest::qExec( &m, argc, argv );
-}
+namespace opaint {
+namespace test {
 
-using namespace opaint::test;
-
-ColorWidget::ColorWidget(QObject *parent) : QObject(parent)
+ColorWidget::ColorWidget()
 {
 
-}
-
-ColorWidget::~ColorWidget()
-{
-    delete prog;
-}
-
-void ColorWidget::start( int argc, char** argv )
-{
-    prog = new opaint::Program( argc, argv);
-    widget = prog->mainWindow()->colorWidget();
-    prog->start();
 }
 
 void ColorWidget::colorTest(QColor color)
@@ -56,13 +38,19 @@ void ColorWidget::colorTest(QColor color)
 
     auto widgetColor = widget->colorView()->styleSheet();
 
-    QString styleSheet(QString("background-color: rgb(%1, %2, %3)")
+    QString colorPattern(QString("background-color: rgb(%1, %2, %3)")
                              .arg(color.red())
                              .arg(color.green())
                              .arg(color.blue())
                             );
 
-    QCOMPARE(widgetColor, styleSheet);
+    QCOMPARE( widgetColor, colorPattern );
+}
+
+void ColorWidget::initTestCase()
+{
+    progTest.start();
+    widget = progTest.program()->mainWindow()->colorWidget();
 }
 
 void ColorWidget::black() { colorTest(Qt::black); }
@@ -74,3 +62,8 @@ void ColorWidget::red() { colorTest(Qt::red); }
 void ColorWidget::green() { colorTest(Qt::green); }
 
 void ColorWidget::blue() { colorTest(Qt::blue); }
+
+} // namespace test
+} // namespace opaint
+
+QTEST_APPLESS_MAIN(opaint::test::ColorWidget);

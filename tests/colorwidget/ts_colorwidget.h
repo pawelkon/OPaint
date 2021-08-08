@@ -25,9 +25,7 @@ SOFTWARE.
 #ifndef OPAINT_TEST_COLORWIDGET_H
 #define OPAINT_TEST_COLORWIDGET_H
 
-#include <QTest>
-
-#include <opaint/Program>
+#include "../program/ts_program.h"
 
 namespace opaint {
 namespace test {
@@ -36,19 +34,17 @@ class ColorWidget : public QObject
     Q_OBJECT
 
 private:
-    opaint::Program *prog = nullptr;
+    opaint::test::Program progTest;
     opaint::ui::ColorWidget *widget = nullptr;
 
 public:
-    explicit ColorWidget(QObject *parent = nullptr);
-    ~ColorWidget();
-
-    void start(int, char**);
+    ColorWidget();
 
 private:
     void colorTest(QColor);
 
 private slots:
+    void initTestCase();
     void black();
     void white();
     void red();
@@ -60,5 +56,4 @@ signals:
 };
 } // namespace test
 } // namespace opaint
-
 #endif // OPAINT_TEST_COLORWIDGET_H
