@@ -40,11 +40,3 @@ void Gui::start(int argc, char **argv)
 }
 
 opaint::Program * Gui::program() { return prog; }
-
-int main(int argc, char** argv)
-{
-    Gui m;
-    m.start( argc, argv );
-    return QTest::qExec( &m, argc, argv );
-}
-
