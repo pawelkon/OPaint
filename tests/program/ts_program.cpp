@@ -22,21 +22,39 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#include "gui.h"
+#include "ts_program.h"
 
 using namespace opaint::test;
 
-Gui::Gui() {}
+Program::Program() {}
 
-Gui::~Gui()
+Program::~Program()
 {
-    delete prog;
+    if(ptrcheck(prog)) delete prog;
 }
 
-void Gui::start(int argc, char **argv)
+QStringList Program::parameters()
 {
-    prog = new opaint::Program( argc, argv);
+    return params;
+}
+
+void Program::setParameter(const QString &str)
+{
+    params.append(str);
+}
+
+void Program::start()
+{
+    auto argc = params.length();
+
+    char * argv[argc];
+    for(auto i = 0; i < argc; i++)
+    {
+        argv[i] = const_cast< char* >( params.at(i).toStdString().c_str() );
+    }
+
+    prog = new opaint::Program( argc, argv );
     prog->start();
 }
 
-opaint::Program * Gui::program() { return prog; }
+opaint::Program * Program::program() { return prog; }

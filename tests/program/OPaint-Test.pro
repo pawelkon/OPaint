@@ -10,9 +10,9 @@ TEMPLATE = app
 include(../../src/OPaint/OPaint.pri)
 
 SOURCES +=  \
-    $$PWD/gui.cpp
+    $$PWD/ts_program.cpp
 
 HEADERS += \
-    $$PWD/gui.h
+    $$PWD/ts_program.h
 
 INCLUDEPATH += $$PWD/../../src/OPaint/

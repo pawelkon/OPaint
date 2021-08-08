@@ -31,21 +31,24 @@ SOFTWARE.
 
 namespace opaint {
 namespace test {
-class Gui : public QObject
+class Program : public QObject
 {
     Q_OBJECT
 
 private:
     opaint::Program *prog = nullptr;
+    QStringList params;
 
 public:
-    Gui();
-    ~Gui();
+    Program();
+    ~Program();
 
-    void start(int, char**);
+    QStringList parameters();
+    void setParameter(const QString&);
+
+    void start();
 
     opaint::Program * program();
-
 };
 } //namespace test
 } //namespace opaint
