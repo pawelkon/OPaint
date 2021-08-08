@@ -18,3 +18,5 @@ HEADERS += \
     colorchoice.h \
     drawlinetest.h \
     gui.h
+
+INCLUDEPATH += $$PWD/../../src/OPaint/
