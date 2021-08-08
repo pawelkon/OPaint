@@ -22,8 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#include "drawlinetest.h"
 #include "gui.h"
+
+using namespace opaint::test;
 
 Gui::Gui() {}
 
@@ -38,30 +39,7 @@ void Gui::start(int argc, char **argv)
     prog->start();
 }
 
-void Gui::ColorChoice()
-{
-    class ColorChoice cch(prog->mainWindow()->colorWidget());
-    cch.test();
-}
-
-void Gui::drawLine(const QColor &color)
-{
-    DrawLineTest test;
-    test.setLabel(prog->mainWindow()->drawingArea());
-    test.setColorWidget(prog->mainWindow()->colorWidget());
-    test.setColor(color);
-    test.exec();
-}
-
-void Gui::drawBlackLine() { drawLine(Qt::black); }
-
-void Gui::drawRedLine() { drawLine(Qt::red); }
-
-void Gui::drawGreenLine() { drawLine(Qt::green); }
-
-void Gui::drawBlueLine() { drawLine(Qt::blue); }
-
-void Gui::drawWhiteLine() { drawLine(Qt::white); }
+opaint::Program * Gui::program() { return prog; }
 
 int main(int argc, char** argv)
 {

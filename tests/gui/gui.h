@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef GUI_H
-#define GUI_H
-
-#include "colorchoice.h"
+#ifndef OPAINT_TEST_GUI_H
+#define OPAINT_TEST_GUI_H
 
 #include <QTest>
 
 #include <opaint/Program>
 
+namespace opaint {
+namespace test {
 class Gui : public QObject
 {
     Q_OBJECT
@@ -44,15 +44,10 @@ public:
 
     void start(int, char**);
 
-private slots:
-    void ColorChoice();
+    opaint::Program * program();
 
-    void drawLine(const QColor&);
-    void drawBlackLine();
-    void drawRedLine();
-    void drawGreenLine();
-    void drawBlueLine();
-    void drawWhiteLine();
 };
+} //namespace test
+} //namespace opaint
 
-#endif // GUI_H
+#endif // OPAINT_TEST_GUI_H

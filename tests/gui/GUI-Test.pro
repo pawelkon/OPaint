@@ -10,13 +10,9 @@ TEMPLATE = app
 include(../../src/OPaint/OPaint.pri)
 
 SOURCES +=  \
-    colorchoice.cpp \
-    drawlinetest.cpp \
-    gui.cpp
+    $$PWD/gui.cpp
 
 HEADERS += \
-    colorchoice.h \
-    drawlinetest.h \
-    gui.h
+    $$PWD/gui.h
 
 INCLUDEPATH += $$PWD/../../src/OPaint/
