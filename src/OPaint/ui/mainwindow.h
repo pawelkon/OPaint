@@ -26,6 +26,7 @@ SOFTWARE.
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QScrollArea>
 #include <QVBoxLayout>
 
 #include <opaint/ui/ColorWidget>
@@ -45,6 +46,7 @@ private:
     QVBoxLayout *centralLayout;
     ColorWidget *colWidget = nullptr;
     DrawingArea *dArea;
+    QScrollArea *dScrollArea = nullptr;
 
 public:
     MainWindow(QWidget *parent = nullptr);

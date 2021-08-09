@@ -41,12 +41,17 @@ MainWindow::MainWindow(QWidget *parent)
     this->centralLayout->addWidget(colWidget);
 
     dArea = new DrawingArea;
-    this->centralLayout->addWidget(dArea);
+    dArea->setAlignment(Qt::AlignTop);
+
+    dScrollArea = new QScrollArea;
+    dScrollArea->setWidgetResizable(true);
+    dScrollArea->setWidget(dArea);
+    this->centralLayout->addWidget(dScrollArea);
 }
 
 MainWindow::~MainWindow()
 {
-    delete dArea; delete colWidget; delete centralLayout; delete ui;
+    delete dArea; delete dScrollArea; delete colWidget; delete centralLayout; delete ui;
 }
 
 ColorWidget * MainWindow::colorWidget() { return colWidget; }
