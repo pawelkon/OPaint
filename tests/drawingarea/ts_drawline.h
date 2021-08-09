@@ -22,44 +22,53 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#include "ts_drawingarea.h"
-#include "ts_drawline.h"
+#ifndef OPAINT_TEST_PAINTING_H
+#define OPAINT_TEST_PAINTING_H
+
+#include <QTest>
+
+#include <QColor>
+#include <QObject>
+#include <QPoint>
+#include <QLabel>
+
+#include <opaint/ui/ColorWidget>
 
 namespace opaint {
 namespace test {
 
-DrawingArea::DrawingArea()
+class DrawLine : public QObject
 {
+    Q_OBJECT
 
-}
+private:
+    QColor color;
+    QPoint startPoint, endPoint;
 
-void DrawingArea::DrawLine(QColor color, QPoint start = QPoint(5,5), QPoint end = QPoint(50,50))
-{
-    class DrawLine dl;
-    dl.setColor(color);
-    dl.setStartPoint(start);
-    dl.setEndPoint(end);
-    dl.setColorWidget(progTest.program()->mainWindow()->colorWidget());
-    dl.setDrawingArea(progTest.program()->mainWindow()->drawingArea());
-    dl.exec();
-}
+    ui::ColorWidget *colorWidget = nullptr;
+    QLabel *drawingArea = nullptr;
 
-void DrawingArea::initTestCase()
-{
-    progTest.start();
-}
+public:
+    explicit DrawLine(QObject *parent = nullptr);
 
-void DrawingArea::drawBlackLine() { DrawLine(Qt::black); }
+    void setColor(const QColor&);
+    void setStartPoint(const QPoint&);
+    void setEndPoint(const QPoint&);
 
-void DrawingArea::drawWhiteLine() { DrawLine(Qt::white); }
+    void setColorWidget(ui::ColorWidget*);
+    void setDrawingArea(QLabel*);
 
-void DrawingArea::drawRedLine() { DrawLine(Qt::red); }
+    void exec();
 
-void DrawingArea::drawGreenLine() { DrawLine(Qt::green); }
+private:
+    QImage prepareRefImage(const QImage&);
+    void sendMouseEvents();
 
-void DrawingArea::drawBlueLine() { DrawLine(Qt::blue); }
+signals:
+
+};
 
 } // namespace test
 } // namespace opaint
 
-QTEST_APPLESS_MAIN(opaint::test::DrawingArea);
+#endif // OPAINT_TEST_PAINTING_H

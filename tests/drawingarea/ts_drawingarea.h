@@ -34,8 +34,23 @@ class DrawingArea : public QObject
 {
     Q_OBJECT
 
+private:
+    opaint::test::Program progTest;
+
 public:
     DrawingArea();
+
+private:
+    void DrawLine(QColor, QPoint, QPoint);
+
+private slots:
+    void initTestCase();
+
+    void drawBlackLine();
+    void drawWhiteLine();
+    void drawRedLine();
+    void drawGreenLine();
+    void drawBlueLine();
 
 };
 

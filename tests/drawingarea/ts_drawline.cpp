@@ -22,44 +22,80 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#include "ts_drawingarea.h"
 #include "ts_drawline.h"
+
+#include <QApplication>
+#include <QMouseEvent>
+#include <QPainter>
 
 namespace opaint {
 namespace test {
 
-DrawingArea::DrawingArea()
+DrawLine::DrawLine(QObject *parent) : QObject(parent)
 {
 
 }
 
-void DrawingArea::DrawLine(QColor color, QPoint start = QPoint(5,5), QPoint end = QPoint(50,50))
+void DrawLine::setColor(const QColor &color)
 {
-    class DrawLine dl;
-    dl.setColor(color);
-    dl.setStartPoint(start);
-    dl.setEndPoint(end);
-    dl.setColorWidget(progTest.program()->mainWindow()->colorWidget());
-    dl.setDrawingArea(progTest.program()->mainWindow()->drawingArea());
-    dl.exec();
+    this->color = color;
 }
 
-void DrawingArea::initTestCase()
+void DrawLine::setStartPoint(const QPoint &point)
 {
-    progTest.start();
+    startPoint = point;
 }
 
-void DrawingArea::drawBlackLine() { DrawLine(Qt::black); }
+void DrawLine::setEndPoint(const QPoint &point)
+{
+    endPoint = point;
+}
 
-void DrawingArea::drawWhiteLine() { DrawLine(Qt::white); }
+void DrawLine::setColorWidget(ui::ColorWidget *widget)
+{
+    colorWidget = widget;
+}
 
-void DrawingArea::drawRedLine() { DrawLine(Qt::red); }
+void DrawLine::setDrawingArea(QLabel *label)
+{
+    drawingArea = label;
+}
 
-void DrawingArea::drawGreenLine() { DrawLine(Qt::green); }
+void DrawLine::exec()
+{
+    colorWidget->setColor(color);
 
-void DrawingArea::drawBlueLine() { DrawLine(Qt::blue); }
+    auto daImage = drawingArea->pixmap()->toImage();
+    auto refImage = prepareRefImage(daImage);
+
+    sendMouseEvents();
+    daImage = drawingArea->pixmap()->toImage();
+
+    QCOMPARE(daImage, refImage);
+}
+
+QImage DrawLine::prepareRefImage(const QImage &original)
+{
+    QImage img(original);
+
+    QPainter p;
+    p.begin(&img);
+    p.setPen(color);
+    p.setBrush(color);
+    p.drawLine(startPoint, endPoint);
+    p.end();
+
+    return img;
+}
+
+void DrawLine::sendMouseEvents()
+{
+    QMouseEvent press(QEvent::MouseButtonPress, startPoint, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(drawingArea, &press);
+
+    QMouseEvent move(QEvent::MouseMove, endPoint, Qt::NoButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(drawingArea, &move);
+}
 
 } // namespace test
 } // namespace opaint
-
-QTEST_APPLESS_MAIN(opaint::test::DrawingArea);
