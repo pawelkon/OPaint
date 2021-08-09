@@ -1,4 +1,4 @@
-include(../program/OPaint-Test.pro)
+include(../program/OPaint-Test.pri)
 
 SOURCES += \
     ts_drawingarea.cpp \
