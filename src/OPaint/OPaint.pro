@@ -21,6 +21,7 @@ DISTFILES += \
     ../../include/opaint/PaintColor \
     ../../include/opaint/PaintEvent \
     ../../include/opaint/PainterTools \
+    ../../include/opaint/PenCursor \
     ../../include/opaint/PenEvent \
     ../../include/opaint/Program \
     ../../include/opaint/ui/ColorWidget \

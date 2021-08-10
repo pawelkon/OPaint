@@ -6,6 +6,7 @@ SOURCES += \
     $$PWD/paintcolor.cpp \
     $$PWD/paintertools.cpp \
     $$PWD/paintevent.cpp \
+    $$PWD/pencursor.cpp \
     $$PWD/penevent.cpp \
     $$PWD/ui/colorwidget.cpp \
     $$PWD/ui/drawingarea.cpp \
@@ -20,6 +21,7 @@ HEADERS += \
     $$PWD/paintcolor.h \
     $$PWD/paintertools.h \
     $$PWD/paintevent.h \
+    $$PWD/pencursor.h \
     $$PWD/penevent.h \
     $$PWD/ui/colorwidget.h \
     $$PWD/ui/drawingarea.h \
