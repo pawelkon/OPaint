@@ -22,27 +22,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************************************/
 
-#ifndef OPAINT_PENEVENT_H
-#define OPAINT_PENEVENT_H
+#include "linepainter.h"
 
-#include <opaint/PaintEvent>
+using namespace opaint;
 
-namespace opaint {
-class PenEvent : public PaintEvent
+LinePainter::LinePainter(QObject *parent) : PaintEvent(parent)
 {
-private:
-    QPointF startingPoint;
 
-public:
-    explicit PenEvent(QObject *parent = nullptr);
+}
 
-    void connect() override;
+void LinePainter::connect()
+{
+    QObject::connect(mouseButton(), &MouseButton::pressed, this, &LinePainter::drawDot);
+    QObject::connect(mouse(), &Mouse::moveEvent, this, &LinePainter::drawLine);
+}
 
-private slots:
-    void drawDot(QMouseEvent*);
-    void drawLine(QMouseEvent*);
+void LinePainter::drawDot(QMouseEvent *ev)
+{
+    startingPoint = ev->localPos();
 
-};
-} // namespace opaint
+    if(ptrcheck(painter())) painter()->drawPoint(startingPoint);
 
-#endif // OPAINT_PENEVENT_H
+    if(ptrcheck(labelPixmap())) labelPixmap()->update();
+}
+
+void LinePainter::drawLine(QMouseEvent *ev)
+{
+    if(ptrcheck(mouseButton()) && ev->buttons() == mouseButton()->qtButton())
+    {
+        if(ptrcheck(painter())) painter()->drawLine(startingPoint, ev->localPos());
+
+        startingPoint = ev->localPos();
+        if(ptrcheck(labelPixmap())) labelPixmap()->update();
+    }
+}

@@ -30,7 +30,7 @@ SOFTWARE.
 
 #include <opaint/ui/MainWindow>
 #include <opaint/LabelPixmap>
-#include <opaint/PenEvent>
+#include <opaint/LinePainter>
 #include <opaint/PainterTools>
 #include <opaint/PaintColor>
 #include <opaint/PenCursor>
@@ -47,7 +47,7 @@ private:
     LabelPixmap *labelPixmap = nullptr;
     QPainter *painter = nullptr;
     PainterTools *painterTools = nullptr;
-    PenEvent *penEvent = nullptr;
+    LinePainter *linePainter = nullptr;
     PaintColor *paintColor = nullptr;
     PenCursor *penCursor = nullptr;
 
@@ -65,7 +65,7 @@ public:
     void initLabelPixmap();
     void initPainter();
     void initPainterTools();
-    void initPenEvent();
+    void initLinePainter();
     void initPaintColor();
     void initPenCursor();
 

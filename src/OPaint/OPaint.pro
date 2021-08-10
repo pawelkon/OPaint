@@ -16,13 +16,13 @@ SOURCES += \
 DISTFILES += \
     ../../include/opaint/Debug \
     ../../include/opaint/LabelPixmap \
+    ../../include/opaint/LinePainter \
     ../../include/opaint/Mouse \
     ../../include/opaint/MouseButton \
     ../../include/opaint/PaintColor \
     ../../include/opaint/PaintEvent \
     ../../include/opaint/PainterTools \
     ../../include/opaint/PenCursor \
-    ../../include/opaint/PenEvent \
     ../../include/opaint/Program \
     ../../include/opaint/ui/ColorWidget \
     ../../include/opaint/ui/DrawingArea \

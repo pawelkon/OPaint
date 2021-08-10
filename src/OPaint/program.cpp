@@ -35,7 +35,7 @@ Program::~Program()
 {
     delete penCursor;
     delete paintColor;
-    delete penEvent;
+    delete linePainter;
     delete painterTools;
     delete painter;
     delete labelPixmap;
@@ -60,7 +60,7 @@ void Program::init()
     initLabelPixmap();
     initPainter();
     initPainterTools();
-    initPenEvent();
+    initLinePainter();
     initPaintColor();
     initPenCursor();
 }
@@ -95,14 +95,14 @@ void Program::initPainter()
 
 void Program::initPainterTools() { painterTools = new PainterTools(painter); }
 
-void Program::initPenEvent()
+void Program::initLinePainter()
 {
-    penEvent = new PenEvent;
-    penEvent->setMouse(mw->drawingArea()->mouse());
-    penEvent->setMouseButton(mw->drawingArea()->mouse()->leftButton());
-    penEvent->setLabelPixmap(labelPixmap);
-    penEvent->setPainter(painter);
-    penEvent->connect();
+    linePainter = new LinePainter;
+    linePainter->setMouse(mw->drawingArea()->mouse());
+    linePainter->setMouseButton(mw->drawingArea()->mouse()->leftButton());
+    linePainter->setLabelPixmap(labelPixmap);
+    linePainter->setPainter(painter);
+    linePainter->connect();
 }
 
 void Program::initPaintColor()

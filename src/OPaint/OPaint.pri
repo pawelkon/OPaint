@@ -1,13 +1,13 @@
 SOURCES += \
     $$PWD/debug.cpp \
     $$PWD/labelpixmap.cpp \
+    $$PWD/linepainter.cpp \
     $$PWD/mouse/mouse.cpp \
     $$PWD/mouse/mousebutton.cpp \
     $$PWD/paintcolor.cpp \
     $$PWD/paintertools.cpp \
     $$PWD/paintevent.cpp \
     $$PWD/pencursor.cpp \
-    $$PWD/penevent.cpp \
     $$PWD/ui/colorwidget.cpp \
     $$PWD/ui/drawingarea.cpp \
     $$PWD/ui/mainwindow.cpp \
@@ -16,13 +16,13 @@ SOURCES += \
 HEADERS += \
     $$PWD/debug.h \
     $$PWD/labelpixmap.h \
+    $$PWD/linepainter.h \
     $$PWD/mouse/mouse.h \
     $$PWD/mouse/mousebutton.h \
     $$PWD/paintcolor.h \
     $$PWD/paintertools.h \
     $$PWD/paintevent.h \
     $$PWD/pencursor.h \
-    $$PWD/penevent.h \
     $$PWD/ui/colorwidget.h \
     $$PWD/ui/drawingarea.h \
     $$PWD/ui/mainwindow.h \
