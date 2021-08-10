@@ -34,6 +34,7 @@ SOFTWARE.
 #include <opaint/PainterTools>
 #include <opaint/PaintColor>
 #include <opaint/PenCursor>
+#include <opaint/MouseEventCourier>
 
 namespace opaint {
 class Program : public QApplication
@@ -47,6 +48,8 @@ private:
     LabelPixmap *labelPixmap = nullptr;
     QPainter *painter = nullptr;
     PainterTools *painterTools = nullptr;
+    MouseEventCourier *leftButtonCourier = nullptr;
+    MouseEventCourier *mouseMoveCourier = nullptr;
     LinePainter *linePainter = nullptr;
     PaintColor *paintColor = nullptr;
     PenCursor *penCursor = nullptr;
@@ -65,6 +68,8 @@ public:
     void initLabelPixmap();
     void initPainter();
     void initPainterTools();
+    void initLeftButtonCourier();
+    void initMouseMoveCourier();
     void initLinePainter();
     void initPaintColor();
     void initPenCursor();

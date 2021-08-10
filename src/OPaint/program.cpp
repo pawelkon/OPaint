@@ -35,6 +35,8 @@ Program::~Program()
 {
     delete penCursor;
     delete paintColor;
+    delete mouseMoveCourier;
+    delete leftButtonCourier;
     delete linePainter;
     delete painterTools;
     delete painter;
@@ -60,6 +62,8 @@ void Program::init()
     initLabelPixmap();
     initPainter();
     initPainterTools();
+    initLeftButtonCourier();
+    initMouseMoveCourier();
     initLinePainter();
     initPaintColor();
     initPenCursor();
@@ -95,14 +99,34 @@ void Program::initPainter()
 
 void Program::initPainterTools() { painterTools = new PainterTools(painter); }
 
+void Program::initLeftButtonCourier()
+{
+    leftButtonCourier = new MouseEventCourier;
+
+    connect(mw->drawingArea()->mouse()->leftButton(), &MouseButton::pressed,
+            leftButtonCourier, &MouseEventCourier::sender);
+}
+
+void Program::initMouseMoveCourier()
+{
+    mouseMoveCourier = new MouseEventCourier;
+
+    connect(mw->drawingArea()->mouse(), &Mouse::moveEvent,
+            mouseMoveCourier, &MouseEventCourier::sender);
+}
+
 void Program::initLinePainter()
 {
-    linePainter = new LinePainter;
-    linePainter->setMouse(mw->drawingArea()->mouse());
-    linePainter->setMouseButton(mw->drawingArea()->mouse()->leftButton());
-    linePainter->setLabelPixmap(labelPixmap);
-    linePainter->setPainter(painter);
-    linePainter->connect();
+    linePainter = new LinePainter(painter);
+
+    connect(leftButtonCourier, &MouseEventCourier::localPos,
+            linePainter, &LinePainter::setFirstPoint);
+
+    connect(mouseMoveCourier, &MouseEventCourier::localPos,
+            linePainter, &LinePainter::setNextPoint);
+
+    connect(linePainter, &LinePainter::end,
+            labelPixmap, &LabelPixmap::update);
 }
 
 void Program::initPaintColor()
@@ -117,5 +141,7 @@ void Program::initPenCursor()
 {
     penCursor = new PenCursor;
     penCursor->setWidget(mw->drawingArea());
-    connect(mw->colorWidget(), &ui::ColorWidget::colorChanged, penCursor, &PenCursor::changeColor);
+
+    connect(mw->colorWidget(), &ui::ColorWidget::colorChanged,
+            penCursor, &PenCursor::changeColor);
 }
