@@ -45,6 +45,7 @@ public:
     QPixmap * pixmap();
     void setPixmap(QPixmap*);
 
+public slots:
     void update();
 
 signals:
