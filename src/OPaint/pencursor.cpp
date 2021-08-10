@@ -31,7 +31,11 @@ PenCursor::PenCursor(QObject *parent) : QObject(parent)
     size = QSize( 10, 10 );
 }
 
-void PenCursor::setWidget(QWidget *widget) { widg = widget; }
+void PenCursor::setWidget(QWidget *widget)
+{
+    widg = widget;
+    repaint();
+}
 
 void PenCursor::changeColor(const QColor &color)
 {
