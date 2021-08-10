@@ -33,6 +33,7 @@ Program::Program(int argc, char **argv) : QApplication( argc, argv )
 
 Program::~Program()
 {
+    delete penCursor;
     delete paintColor;
     delete penEvent;
     delete painterTools;
@@ -47,7 +48,6 @@ ui::MainWindow * Program::mainWindow() { return mw; }
 
 void Program::start()
 {
-
     init();
     mw->show();
 }
@@ -62,6 +62,7 @@ void Program::init()
     initPainterTools();
     initPenEvent();
     initPaintColor();
+    initPenCursor();
 }
 
 void Program::initImage()
@@ -110,4 +111,11 @@ void Program::initPaintColor()
     paintColor->setColorWidget(mw->colorWidget());
     paintColor->setPainterTools(painterTools);
     paintColor->connect();
+}
+
+void Program::initPenCursor()
+{
+    penCursor = new PenCursor;
+    penCursor->setWidget(mw->drawingArea());
+    connect(mw->colorWidget(), &ui::ColorWidget::colorChanged, penCursor, &PenCursor::changeColor);
 }

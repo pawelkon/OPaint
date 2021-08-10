@@ -33,6 +33,7 @@ SOFTWARE.
 #include <opaint/PenEvent>
 #include <opaint/PainterTools>
 #include <opaint/PaintColor>
+#include <opaint/PenCursor>
 
 namespace opaint {
 class Program : public QApplication
@@ -48,6 +49,7 @@ private:
     PainterTools *painterTools = nullptr;
     PenEvent *penEvent = nullptr;
     PaintColor *paintColor = nullptr;
+    PenCursor *penCursor = nullptr;
 
 public:
     Program(int, char**);
@@ -65,6 +67,7 @@ public:
     void initPainterTools();
     void initPenEvent();
     void initPaintColor();
+    void initPenCursor();
 
 };
 } // namespace opaint
