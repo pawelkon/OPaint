@@ -19,6 +19,7 @@ DISTFILES += \
     ../../include/opaint/LinePainter \
     ../../include/opaint/Mouse \
     ../../include/opaint/MouseButton \
+    ../../include/opaint/MouseEventCourier \
     ../../include/opaint/PaintColor \
     ../../include/opaint/PaintEvent \
     ../../include/opaint/PainterTools \

@@ -4,6 +4,7 @@ SOURCES += \
     $$PWD/linepainter.cpp \
     $$PWD/mouse/mouse.cpp \
     $$PWD/mouse/mousebutton.cpp \
+    $$PWD/mouse/mouseeventcourier.cpp \
     $$PWD/paintcolor.cpp \
     $$PWD/paintertools.cpp \
     $$PWD/paintevent.cpp \
@@ -19,6 +20,7 @@ HEADERS += \
     $$PWD/linepainter.h \
     $$PWD/mouse/mouse.h \
     $$PWD/mouse/mousebutton.h \
+    $$PWD/mouse/mouseeventcourier.h \
     $$PWD/paintcolor.h \
     $$PWD/paintertools.h \
     $$PWD/paintevent.h \
