@@ -25,23 +25,29 @@ SOFTWARE.
 #ifndef OPAINT_PENEVENT_H
 #define OPAINT_PENEVENT_H
 
-#include <opaint/PaintEvent>
+#include <QObject>
+#include <QPainter>
+
+#include <opaint/Debug>
 
 namespace opaint {
-class LinePainter : public PaintEvent
+class LinePainter : public QObject
 {
+    Q_OBJECT
+
 private:
-    QPointF startingPoint;
+    QPointF refPoint;
+    QPainter *painter = nullptr;
 
 public:
-    explicit LinePainter(QObject *parent = nullptr);
+    LinePainter(QPainter*);
 
-    void connect() override;
+public slots:
+    void setFirstPoint(const QPointF&);
+    void setNextPoint(const QPointF&);
 
-private slots:
-    void drawDot(QMouseEvent*);
-    void drawLine(QMouseEvent*);
-
+signals:
+    void end();
 };
 } // namespace opaint
 

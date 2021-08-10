@@ -26,33 +26,25 @@ SOFTWARE.
 
 using namespace opaint;
 
-LinePainter::LinePainter(QObject *parent) : PaintEvent(parent)
+LinePainter::LinePainter(QPainter *painter)
 {
-
+    this->painter = painter;
 }
 
-void LinePainter::connect()
+void LinePainter::setFirstPoint(const QPointF &point)
 {
-    QObject::connect(mouseButton(), &MouseButton::pressed, this, &LinePainter::drawDot);
-    QObject::connect(mouse(), &Mouse::moveEvent, this, &LinePainter::drawLine);
+    refPoint = point;
+
+    if( ptrcheck(painter) ) painter->drawPoint(refPoint);
+
+    emit end();
 }
 
-void LinePainter::drawDot(QMouseEvent *ev)
+void LinePainter::setNextPoint(const QPointF &point)
 {
-    startingPoint = ev->localPos();
+    if( ptrcheck(painter) ) painter->drawLine(refPoint, point);
 
-    if(ptrcheck(painter())) painter()->drawPoint(startingPoint);
+    refPoint = point;
 
-    if(ptrcheck(labelPixmap())) labelPixmap()->update();
-}
-
-void LinePainter::drawLine(QMouseEvent *ev)
-{
-    if(ptrcheck(mouseButton()) && ev->buttons() == mouseButton()->qtButton())
-    {
-        if(ptrcheck(painter())) painter()->drawLine(startingPoint, ev->localPos());
-
-        startingPoint = ev->localPos();
-        if(ptrcheck(labelPixmap())) labelPixmap()->update();
-    }
+    emit end();
 }
